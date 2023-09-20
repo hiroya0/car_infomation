@@ -82,3 +82,5 @@ gem 'devise'
 gem 'httparty'
 
 gem 'dotenv-rails'
+
+gem 'pry-rails'
