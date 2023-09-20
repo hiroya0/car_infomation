@@ -78,3 +78,7 @@ end
 
 # Devise
 gem 'devise'
+
+gem 'httparty'
+
+gem 'dotenv-rails'
