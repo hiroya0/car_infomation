@@ -15,6 +15,7 @@
               <p class="card-text">
                 <%= article["title"] %>
               </p>
+                <%= link_to "詳細を見る", article_path(url_to_hash(article["url"])) %>
             </div>
           </div>
         </div>
