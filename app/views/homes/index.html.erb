@@ -1,3 +1,4 @@
+<% if user_signed_in? %>
 <!doctype html>
 <html lang="ja" >
   <head>
@@ -20,9 +21,7 @@
         </div>
         <div class="col-sm-4 offset-md-1 py-4">
           <h4 class="text-white"></h4>
-          <p><%= link_to "ログイン", "/users/sign_in" %></p>
-          <p><%= link_to "新規登録", "/users/sign_up" %></p>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          <p><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
         </div>
       </div>
     </div>
@@ -249,6 +248,259 @@
     <p>Bootstrap 縺ｯ蛻昴ａ縺ｦ縺ｧ縺吶°�� <a href="../../">Bootstrap 繝帙�繝�繝壹�繧ｸ縺ｫ繧｢繧ｯ繧ｻ繧ｹ縺吶ｋ</a>縺�<a href="../../getting-started/">繧ｹ繧ｿ繝ｼ繝医ぎ繧､繝�</a>繧定ｪｭ縺ｿ縺ｾ縺励ｇ縺��</p>
   </div>
 </footer>
-
   </body>
 </html>
+<% else %>
+<!doctype html>
+<html lang="ja" >
+  <head>
+    <title>繧｢繝ｫ繝舌Β繧ｵ繝ｳ繝励Ν for Bootstrap ﾂｷ Bootstrap</title>
+  </head>
+  <body >
+    <a id="skippy" class="sr-only sr-only-focusable" href="#content">
+  <div class="container">
+    <span class="skiplink-text">Skip to main content</span>
+  </div>
+</a>
+
+    <header>
+  <div class="collapse bg-dark" id="navbarHeader">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-md-7 py-4">
+          <h4 class="text-white">About</h4>
+          <p class="text-muted">謦ｮ蠖ｱ閠�ｄ謦ｮ蠖ｱ縺励◆閭梧勹縺ｪ縺ｩ, 繧｢繝ｫ繝舌Β縺ｫ髢｢縺吶ｋ諠��ｱ繧定ｿｽ蜉�縺励∪縺励ｇ縺�ゅ＞縺上▽縺九�譁�ｒ譖ｸ縺�※縺翫￥縺ｨ, 蜿矩＃縺悟�逵溘ｒ驕ｸ縺ｶ謇句勧縺代↓縺ｪ繧九°繧ゅ＠繧後∪縺帙ｓ縲ゅ∪縺�, 蜀咏悄縺ｯ SNS 繧�｣邨｡蜈医∈縺ｨ繝ｪ繝ｳ繧ｯ縺励※縺翫″縺ｾ縺励ｇ縺��</p>
+        </div>
+        <div class="col-sm-4 offset-md-1 py-4">
+          <h4 class="text-white"></h4>
+          <p><%= link_to "ログイン", "/users/sign_in" %></p>
+          <p><%= link_to "新規登録", "/users/sign_up" %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container d-flex justify-content-between">
+      <a href="#" class="navbar-brand d-flex align-items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+        <!-- <strong>Album</strong> -->
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main role="main">
+
+  <section class="jumbotron text-center">
+    <div class="container">
+      <!-- <h1 class="jumbotron-heading">Album example</h1> -->
+      <h1 class="jumbotron-heading">車をもっと知ろう</h1>
+      <!-- <p class="lead text-muted">Something short and leading about the collection below窶琶ts contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p> -->
+      <p class="lead text-muted">当アプリは車の情報を素早く検索、みんなと共有できる特化型の情報検索アプリです</p>
+      <p>
+        <%= link_to "現在の最新ニュースを確認する",articles_index_path,class:"btn btn-primary my-2"%>
+      </p>
+    </div>
+  </section>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+            <div class="card-body">
+              <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+              <p class="card-text">縺薙ｌ縺ｯ蜀咏悄縺ｮ隗｣隱ｬ譁�ｻ倥″縺ｮ繧ｫ繝ｼ繝峨〒縺吶り�辟ｶ縺ｫ隱ｬ譏弱ｒ蜉�縺医ｋ縺薙→縺後〒縺阪∪縺吶ゅ＠縺九＠縺薙�譁�ｫ�縺ｯ蟆代＠髟ｷ縺�°繧ゅ＠繧後∪縺帙ｓ縲�</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
+                  <button type="button" class="btn btn-sm btn-outline-secondary">隕九ｋ</button>
+                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+                  <button type="button" class="btn btn-sm btn-outline-secondary">邱ｨ髮�</button>
+                </div>
+                <!-- <small class="text-muted">9 mins</small> -->
+                <small class="text-muted">9蛻�</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+            <div class="card-body">
+              <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+              <p class="card-text">縺薙ｌ縺ｯ蜀咏悄縺ｮ隗｣隱ｬ譁�ｻ倥″縺ｮ繧ｫ繝ｼ繝峨〒縺吶り�辟ｶ縺ｫ隱ｬ譏弱ｒ蜉�縺医ｋ縺薙→縺後〒縺阪∪縺吶ゅ＠縺九＠縺薙�譁�ｫ�縺ｯ蟆代＠髟ｷ縺�°繧ゅ＠繧後∪縺帙ｓ縲�</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
+                  <button type="button" class="btn btn-sm btn-outline-secondary">隕九ｋ</button>
+                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+                  <button type="button" class="btn btn-sm btn-outline-secondary">邱ｨ髮�</button>
+                </div>
+                <!-- <small class="text-muted">9 mins</small> -->
+                <small class="text-muted">9蛻�</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+            <div class="card-body">
+              <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+              <p class="card-text">縺薙ｌ縺ｯ蜀咏悄縺ｮ隗｣隱ｬ譁�ｻ倥″縺ｮ繧ｫ繝ｼ繝峨〒縺吶り�辟ｶ縺ｫ隱ｬ譏弱ｒ蜉�縺医ｋ縺薙→縺後〒縺阪∪縺吶ゅ＠縺九＠縺薙�譁�ｫ�縺ｯ蟆代＠髟ｷ縺�°繧ゅ＠繧後∪縺帙ｓ縲�</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
+                  <button type="button" class="btn btn-sm btn-outline-secondary">隕九ｋ</button>
+                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+                  <button type="button" class="btn btn-sm btn-outline-secondary">邱ｨ髮�</button>
+                </div>
+                <!-- <small class="text-muted">9 mins</small> -->
+                <small class="text-muted">9蛻�</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+            <div class="card-body">
+              <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+              <p class="card-text">縺薙ｌ縺ｯ蜀咏悄縺ｮ隗｣隱ｬ譁�ｻ倥″縺ｮ繧ｫ繝ｼ繝峨〒縺吶り�辟ｶ縺ｫ隱ｬ譏弱ｒ蜉�縺医ｋ縺薙→縺後〒縺阪∪縺吶ゅ＠縺九＠縺薙�譁�ｫ�縺ｯ蟆代＠髟ｷ縺�°繧ゅ＠繧後∪縺帙ｓ縲�</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
+                  <button type="button" class="btn btn-sm btn-outline-secondary">隕九ｋ</button>
+                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+                  <button type="button" class="btn btn-sm btn-outline-secondary">邱ｨ髮�</button>
+                </div>
+                <!-- <small class="text-muted">9 mins</small> -->
+                <small class="text-muted">9蛻�</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+            <div class="card-body">
+              <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+              <p class="card-text">縺薙ｌ縺ｯ蜀咏悄縺ｮ隗｣隱ｬ譁�ｻ倥″縺ｮ繧ｫ繝ｼ繝峨〒縺吶り�辟ｶ縺ｫ隱ｬ譏弱ｒ蜉�縺医ｋ縺薙→縺後〒縺阪∪縺吶ゅ＠縺九＠縺薙�譁�ｫ�縺ｯ蟆代＠髟ｷ縺�°繧ゅ＠繧後∪縺帙ｓ縲�</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
+                  <button type="button" class="btn btn-sm btn-outline-secondary">隕九ｋ</button>
+                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+                  <button type="button" class="btn btn-sm btn-outline-secondary">邱ｨ髮�</button>
+                </div>
+                <!-- <small class="text-muted">9 mins</small> -->
+                <small class="text-muted">9蛻�</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+            <div class="card-body">
+              <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+              <p class="card-text">縺薙ｌ縺ｯ蜀咏悄縺ｮ隗｣隱ｬ譁�ｻ倥″縺ｮ繧ｫ繝ｼ繝峨〒縺吶り�辟ｶ縺ｫ隱ｬ譏弱ｒ蜉�縺医ｋ縺薙→縺後〒縺阪∪縺吶ゅ＠縺九＠縺薙�譁�ｫ�縺ｯ蟆代＠髟ｷ縺�°繧ゅ＠繧後∪縺帙ｓ縲�</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
+                  <button type="button" class="btn btn-sm btn-outline-secondary">隕九ｋ</button>
+                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+                  <button type="button" class="btn btn-sm btn-outline-secondary">邱ｨ髮�</button>
+                </div>
+                <!-- <small class="text-muted">9 mins</small> -->
+                <small class="text-muted">9蛻�</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+            <div class="card-body">
+              <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+              <p class="card-text">縺薙ｌ縺ｯ蜀咏悄縺ｮ隗｣隱ｬ譁�ｻ倥″縺ｮ繧ｫ繝ｼ繝峨〒縺吶り�辟ｶ縺ｫ隱ｬ譏弱ｒ蜉�縺医ｋ縺薙→縺後〒縺阪∪縺吶ゅ＠縺九＠縺薙�譁�ｫ�縺ｯ蟆代＠髟ｷ縺�°繧ゅ＠繧後∪縺帙ｓ縲�</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
+                  <button type="button" class="btn btn-sm btn-outline-secondary">隕九ｋ</button>
+                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+                  <button type="button" class="btn btn-sm btn-outline-secondary">邱ｨ髮�</button>
+                </div>
+                <!-- <small class="text-muted">9 mins</small> -->
+                <small class="text-muted">9蛻�</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+            <div class="card-body">
+              <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+              <p class="card-text">縺薙ｌ縺ｯ蜀咏悄縺ｮ隗｣隱ｬ譁�ｻ倥″縺ｮ繧ｫ繝ｼ繝峨〒縺吶り�辟ｶ縺ｫ隱ｬ譏弱ｒ蜉�縺医ｋ縺薙→縺後〒縺阪∪縺吶ゅ＠縺九＠縺薙�譁�ｫ�縺ｯ蟆代＠髟ｷ縺�°繧ゅ＠繧後∪縺帙ｓ縲�</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
+                  <button type="button" class="btn btn-sm btn-outline-secondary">隕九ｋ</button>
+                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+                  <button type="button" class="btn btn-sm btn-outline-secondary">邱ｨ髮�</button>
+                </div>
+                <!-- <small class="text-muted">9 mins</small> -->
+                <small class="text-muted">9蛻�</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+            <div class="card-body">
+              <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+              <p class="card-text">縺薙ｌ縺ｯ蜀咏悄縺ｮ隗｣隱ｬ譁�ｻ倥″縺ｮ繧ｫ繝ｼ繝峨〒縺吶り�辟ｶ縺ｫ隱ｬ譏弱ｒ蜉�縺医ｋ縺薙→縺後〒縺阪∪縺吶ゅ＠縺九＠縺薙�譁�ｫ�縺ｯ蟆代＠髟ｷ縺�°繧ゅ＠繧後∪縺帙ｓ縲�</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
+                  <button type="button" class="btn btn-sm btn-outline-secondary">隕九ｋ</button>
+                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+                  <button type="button" class="btn btn-sm btn-outline-secondary">邱ｨ髮�</button>
+                </div>
+                <!-- <small class="text-muted">9 mins</small> -->
+                <small class="text-muted">9蛻�</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="text-muted">
+  <div class="container">
+    <p class="float-right">
+      <!-- <a href="#">Back to top</a> -->
+      <a href="#">繝医ャ繝励↓謌ｻ繧�</a>
+    </p>
+    <!-- <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p> -->
+    <p>繧｢繝ｫ繝舌Β繧ｵ繝ｳ繝励Ν縺ｯ &copy; Bootstrap 縺ｧ縺吶′, 繝繧ｦ繝ｳ繝ｭ繝ｼ繝峨＠縺ｦ繧ｫ繧ｹ繧ｿ繝槭う繧ｺ縺励※縺ｿ縺ｾ縺励ｇ縺��</p>
+    <!-- <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p> -->
+    <p>Bootstrap 縺ｯ蛻昴ａ縺ｦ縺ｧ縺吶°�� <a href="../../">Bootstrap 繝帙�繝�繝壹�繧ｸ縺ｫ繧｢繧ｯ繧ｻ繧ｹ縺吶ｋ</a>縺�<a href="../../getting-started/">繧ｹ繧ｿ繝ｼ繝医ぎ繧､繝�</a>繧定ｪｭ縺ｿ縺ｾ縺励ｇ縺��</p>
+  </div>
+</footer>
+  </body>
+</html>
+<% end %>
