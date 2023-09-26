@@ -1,5 +1,5 @@
 <h1>Car News</h1>
-
+<%= link_to "トップページに戻る", homes_index_path %>
 <div class="album py-5 bg-light">
   <div class="container">
     <div class="row">
@@ -15,6 +15,7 @@
               <p class="card-text">
                 <%= article["title"] %>
               </p>
+                <%= link_to "詳細を見る", article_path(url_to_hash(article["url"])) %>
             </div>
           </div>
         </div>
