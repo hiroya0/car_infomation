@@ -6,5 +6,10 @@
         <p><%= @article["description"] %></p>
         <a href="<%= @article["url"] %>">Read more</a>
         <%= link_to "記事一覧に戻る", articles_index_path %>
+        <%= form_with url: bookmarks_path, method: :post, local: true do |form| %>
+            <%= form.hidden_field :article_hashed_url, value: params[:id] %>
+            <%= form.submit 'Bookmark' %>
+        <% end %>
+
     </div>
 </div>

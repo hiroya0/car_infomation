@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :bookmarks
-  has_many :bookmarked_articles, through: :bookmarks, source: :article
+  has_many :articles, through: :bookmarks
 end
