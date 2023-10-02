@@ -22,6 +22,8 @@
         <div class="col-sm-4 offset-md-1 py-4">
           <h4 class="text-white"><%= current_user.username %></h4>
           <p><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
+          <p><%= link_to 'ブックマーク一覧', bookmarks_path %></p>
+
         </div>
       </div>
     </div>
