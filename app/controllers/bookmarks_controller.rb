@@ -5,22 +5,27 @@ class BookmarksController < ApplicationController
   def create
     hashed_url = params[:article_hashed_url]
     @article = Article.find_or_initialize_by(hashed_url: hashed_url)
-    bookmark = Bookmark.find_or_create_by(user: current_user, article: @article)
-    Rails.logger.debug "Hashed URL: #{hashed_url}"
-    Rails.logger.debug "New Record?: #{@article.new_record?}"
     
-    if @article.new_record?
+    if @article.new_record? || (@article.title.nil? && @article.content.nil? && @article.urlToImage.nil?)
       @article.assign_attributes(title: params[:title], content: params[:content], urlToImage: params[:urlToImage])
       if @article.save
+        bookmark = Bookmark.find_or_create_by(user: current_user, article: @article)
         flash[:success] = 'Article was successfully bookmarked.'
       else
         flash[:error] = 'There was an error bookmarking the article.'
       end
     else
-      flash[:notice] = 'Article is already bookmarked.'
+      if Bookmark.exists?(user: current_user, article: @article)
+        flash[:notice] = 'Article is already bookmarked.'
+      else
+        Bookmark.create(user: current_user, article: @article)
+        flash[:success] = 'Article was successfully bookmarked.'
+      end
     end
+    
     redirect_to articles_path 
 end
+
 
 
   def destroy
