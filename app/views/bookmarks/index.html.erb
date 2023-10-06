@@ -11,13 +11,11 @@
 
             <div class="card-body">
               <h5 class="card-title"><%= bookmark.article.title %></h5>
-              
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <a href="<%= bookmark.article["url"] %>" class="btn btn-sm btn-outline-secondary" >元の記事を読む</a>  
+                  <%= link_to '元の記事を読む', bookmark.article.url, class: 'btn btn-sm btn-outline-secondary' %>
                   <%= button_to 'ブックマーク解除', bookmark_path(bookmark), method: :delete, 
                     data: { confirm: 'このブックマークを削除しますか？' }, class: "btn btn-sm btn-outline-danger" %>
-
                 </div>
               </div>
               <small class="text-muted">ブックマークした日時: <%= bookmark.created_at %></small>

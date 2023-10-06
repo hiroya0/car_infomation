@@ -5,9 +5,9 @@ class BookmarksController < ApplicationController
   def create
     hashed_url = params[:article_hashed_url]
     @article = Article.find_or_initialize_by(hashed_url: hashed_url)
-    
+    binding.pry
     if @article.new_record? || (@article.title.nil? && @article.content.nil? && @article.urlToImage.nil?)
-      @article.assign_attributes(title: params[:title], content: params[:content], urlToImage: params[:urlToImage])
+      @article.assign_attributes(url: params[:url],title: params[:title], content: params[:content], urlToImage: params[:urlToImage])
       if @article.save
         bookmark = Bookmark.find_or_create_by(user: current_user, article: @article)
         flash[:success] = 'Article was successfully bookmarked.'
@@ -30,7 +30,6 @@ end
 
   def destroy
     bookmark = current_user.bookmarks.find(params[:id])
-    Rails.logger.debug "Deleting bookmark: #{bookmark.inspect}"
     bookmark&.destroy
     flash[:notice] = 'ブックマークを削除しました'
     redirect_to bookmarks_path
@@ -44,5 +43,9 @@ end
 
   def fetch_articles
     NewsApiService.fetch_car_news["articles"]
+  end
+
+  def article_params
+    params.require(:article).permit(:hashed_url, :url, :title, :content, :urlToImage)
   end
 end

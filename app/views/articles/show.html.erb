@@ -6,6 +6,6 @@
         <p><%= @article["description"] %></p>
         <a href="<%= @article["url"] %>">Read more</a>
         <%= link_to "記事一覧に戻る", articles_index_path %>
-        <%= button_to "Bookmark", bookmarks_path(article_hashed_url: @article["hashed_url"], title: @article["title"], content: @article["content"], urlToImage: @article["urlToImage"]), method: :post %>
+        <%= button_to "Bookmark", bookmarks_path(article_hashed_url: @article["hashed_url"], title: @article["title"], content: @article["content"], urlToImage: @article["urlToImage"],url: @article["url"]), method: :post %>
     </div>
 </div>
