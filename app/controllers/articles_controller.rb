@@ -9,6 +9,7 @@ class ArticlesController < ApplicationController
     @articles = fetch_articles
     hashed_url = params[:id]
     @article = @articles.find { |a| url_to_hash(a["url"]) == hashed_url }
+    @article["hashed_url"] = hashed_url
   end
 
   private
