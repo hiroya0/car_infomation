@@ -5,7 +5,6 @@ class BookmarksController < ApplicationController
   def create
     hashed_url = params[:article_hashed_url]
     @article = Article.find_or_initialize_by(hashed_url: hashed_url)
-    binding.pry
     if @article.new_record? || (@article.title.nil? && @article.content.nil? && @article.urlToImage.nil?)
       @article.assign_attributes(url: params[:url],title: params[:title], content: params[:content], urlToImage: params[:urlToImage])
       if @article.save
