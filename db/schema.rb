@@ -26,7 +26,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_05_133824) do
     t.integer "article_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "hashed_url"
     t.index ["article_id"], name: "index_bookmarks_on_article_id"
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
