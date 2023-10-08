@@ -11,10 +11,10 @@ class BookmarksController < ApplicationController
     
     if @article.save
       if Bookmark.exists?(user: current_user, article: @article)
-        flash[:notice] = 'Article is already bookmarked.'
+        flash[:notice] = '記事は既にブックマークされています'
       else
         Bookmark.create(user: current_user, article: @article)
-        flash[:success] = 'Article was successfully bookmarked.'
+        flash[:success] = '記事をブックマークしました'
       end
     end
     redirect_to articles_path 
