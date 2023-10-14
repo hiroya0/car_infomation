@@ -3,7 +3,7 @@ class HomesController < ApplicationController
 
   def index
     @articles = fetch_articles
-    @comments = Comment.all 
+    @comments = Comment.includes(:user, :article).all
   end
 
   def fetch_articles
