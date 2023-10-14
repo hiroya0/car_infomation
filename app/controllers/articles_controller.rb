@@ -10,7 +10,9 @@ class ArticlesController < ApplicationController
     hashed_url = params[:id]
     @article = @articles.find { |a| url_to_hash(a["url"]) == hashed_url }
     @article["hashed_url"] = hashed_url
-  end
+    @actual_article = Article.find_by(url: @article["url"])
+    @comment = @actual_article.comments.build if @actual_article
+end
 
   private
 
