@@ -59,24 +59,23 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
-            <div class="card-body">
-            
-              <% @comments.each do |comment| %>
-               <% if comment.user %>
-  <div>
-    <%= comment.user.username %> ( <%= comment.article.title %> ): <%= comment.content %>
-    <% if comment.user == current_user %>
-      <%= link_to "コメントを削除", article_comment_path(comment.article, comment), method: :delete, data: { confirm: "本当に削除してよろしいですか？" } %>
-    <% end %>
-  </div>
-  <% else %>
-  <p>現在コメントはありません</p>
+          <div class="container">
+  <% @commented_articles.each do |article| %>
+    <div class="card mt-4">
+      <h3><%= article.title %></h3>
+      <img src="<%= article.urlToImage %>" alt="Article image" />
+      <p><%= article.content %></p>
+      <a href="<%= article.url %>">Read more</a>
+      
+      <div class="comments mt-4">
+        <h4>Comments:</h4>
+        <% article.comments.each do |comment| %>
+          <p><%= comment.user.username %>: <%= comment.content %></p>
+        <% end %>
+      </div>
+    </div>
   <% end %>
-  <% end %>
-            </div>
-          </div>
+</div>
         </div>
       </div>
     </div>

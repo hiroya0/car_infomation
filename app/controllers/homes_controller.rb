@@ -2,7 +2,7 @@ class HomesController < ApplicationController
   include ApplicationHelper
 
   def index
-    @articles = fetch_articles
+    @commented_articles = Article.joins(:comments).distinct
     @comments = Comment.includes(:user, :article).all
   end
 
