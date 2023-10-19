@@ -1,25 +1,24 @@
 <h2>ブックマーク一覧</h2>
 <%= link_to "トップページに戻る", homes_index_path %>
 <% @bookmarks.each do |bookmark| %>
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <% if bookmark.article.urlToImage.present? %>
-                <%= image_tag bookmark.article.urlToImage, class: "card-img-top", alt: "Card image cap" %>
-            <% else %>
-                 <p>イラスト屋の画像を表示</p>
-            <% end %>
-
-            <div class="card-body">
-              <h5 class="card-title"><%= bookmark.article.title %></h5>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <%= link_to '元の記事を読む', bookmark.article.url, class: 'btn btn-sm btn-outline-secondary' %>
-                  <%= button_to 'ブックマーク解除', bookmark_path(bookmark), method: :delete, 
-                    data: { confirm: 'このブックマークを削除しますか？' }, class: "btn btn-sm btn-outline-danger" %>
-                </div>
-              </div>
-              <small class="text-muted">ブックマークした日時: <%= bookmark.created_at %></small>
-            </div>
+  <div class="col-md-4">
+    <div class="card mb-4 shadow-sm">
+      <% if bookmark.article.urlToImage.present? %>
+        <%= image_tag bookmark.article.urlToImage, class: "card-img-top", alt: "Card image cap" %>
+      <% else %>
+        <p>イラスト屋の画像を表示</p>
+      <% end %>
+      <div class="card-body">
+        <h5 class="card-title"><%= bookmark.article.title %></h5>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="btn-group">
+            <%= link_to '元の記事を読む', bookmark.article.url, class: 'btn btn-sm btn-outline-secondary' %>
+              <%= button_to 'ブックマーク解除', bookmark_path(bookmark), method: :delete, 
+              data: { confirm: 'このブックマークを削除しますか？' }, class: "btn btn-sm btn-outline-danger" %>
           </div>
         </div>
-      <% end %>
+        <small class="text-muted">ブックマークした日時: <%= bookmark.created_at %></small>
+      </div>
+    </div>
+  </div>
+<% end %>

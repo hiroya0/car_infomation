@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   end
   
   resources :articles, only: [:index, :show] do
-    resources :comments, only: [:create, :destroy]
+    resources :comments, only: [:create]
   end
+
+  resources :comments, only: [:index, :destroy] 
+
   resources :bookmarks, only: [:index, :create, :destroy]
+
 end

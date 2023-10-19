@@ -23,7 +23,7 @@
           <h4 class="text-white"><%= current_user.username %></h4>
           <p><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
           <p><%= link_to 'ブックマーク一覧', bookmarks_path %></p>
-
+          <p><%= link_to "投稿一覧", comments_path %></p>
         </div>
       </div>
     </div>
@@ -66,22 +66,15 @@
       <img src="<%= article.urlToImage %>" alt="Article image" />
       <p><%= article.content %></p>
       <a href="<%= article.url %>">Read more</a>
-      
       <div class="comments mt-4">
         <h4>コメント</h4>
         <% article.comments.each do |comment| %>
-          <p><%= comment.user.username %>: <%= comment.content %></p>
-          
-          <% if comment.user == current_user %>
-            <%= button_to '削除', article_comment_path(article, comment), method: :delete, 
-                    data: { confirm: 'このコメントを削除しますか？' } %>
-          <% end %>
-
+          <p><%= comment.user.username %>: <%= comment.content %>
+          <small class="text-muted"><%= comment.created_at %></small></p>
         <% end %>
       </div>
     </div>
-<% end %>
-
+  <% end %>
 </div>
 
 </div>
