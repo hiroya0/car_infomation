@@ -18,9 +18,7 @@ class BookmarksController < ApplicationController
       end
     end
     redirect_to articles_path 
-end
-
-
+  end
 
   def destroy
     bookmark = current_user.bookmarks.find(params[:id])
