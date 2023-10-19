@@ -1,25 +1,26 @@
 <h2>投稿一覧</h2>
-<div class="container">
-  <%= link_to "トップページに戻る", homes_index_path %>
+<%= link_to "トップページに戻る", homes_index_path %>
+<div class="row">
     <% @comments.each do |comment| %>
-    <div class="col-md-4">
+      <div class="col-md-4">
         <div class="card mb-4 shadow-sm">
-            <h3><%= comment.article.title %></h3>
-                <% if comment.article.urlToImage.present? %>
-                    <%= image_tag comment.article.urlToImage, class: "card-img-top", alt: "Card image cap" %>
-                <% else %>
-                    <p>イラスト屋の画像を表示</p>
-                <% end %>
-            <p><%= comment.content %></p>
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                    <%= link_to '元の記事を読む', comment.article.url, class: 'btn btn-sm btn-outline-secondary' %>
-                    <%= button_to 'コメント削除', comment_path(comment), method: :delete, 
-                    data: { confirm: 'このコメントを削除しますか？' }, class: "btn btn-sm btn-outline-danger" %>
-                </div>
+          <h3><%= comment.article.title %></h3>
+          <% if comment.article.urlToImage.present? %>
+            <%= image_tag comment.article.urlToImage, class: "card-img-top", alt: "Card image cap" %>
+          <% else %>
+            <p>イラスト屋の画像を表示</p>
+          <% end %>
+          <p><%= comment.content %></p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <%= link_to '元の記事を読む', comment.article.url, class: 'btn btn-sm btn-outline-secondary' %>
+              <%= button_to 'コメント削除', comment_path(comment), method: :delete, 
+              data: { confirm: 'このコメントを削除しますか？' }, class: "btn btn-sm btn-outline-danger" %>
             </div>
-            <small class="text-muted">コメントした日時: <%= comment.created_at %></small>
+          </div>
+          <small class="text-muted">コメントした日時: <%= comment.created_at %></small>
         </div>
-    </div>
+      </div>
     <% end %>
 </div>
+
