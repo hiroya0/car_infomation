@@ -68,13 +68,22 @@
       <a href="<%= article.url %>">Read more</a>
       
       <div class="comments mt-4">
-        <h4>Comments:</h4>
+        <h4>コメント</h4>
         <% article.comments.each do |comment| %>
           <p><%= comment.user.username %>: <%= comment.content %></p>
+          
+          <% if comment.user == current_user %>
+            <%= button_to '削除', article_comment_path(article, comment), method: :delete, 
+                    data: { confirm: 'このコメントを削除しますか？' } %>
+          <% end %>
+
         <% end %>
       </div>
     </div>
-  <% end %>
+<% end %>
+
+</div>
+
 </div>
         </div>
       </div>

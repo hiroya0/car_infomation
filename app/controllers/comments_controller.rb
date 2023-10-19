@@ -10,9 +10,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment.destroy
-    flash[:notice] = "コメントが正常に削除されました"
-    redirect_to homes_path
+    comment = current_user.comments.find(params[:id])
+    comment&.destroy
+    flash[:notice] = 'ブックマークを削除しました'
+    redirect_to homes_index_path
   end
 
   private
