@@ -5,6 +5,12 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = fetch_articles
+    if params[:q_title_or_content_cont].present?
+      keyword = params[:q_title_or_content_cont]
+      @articles = @articles.select do |article|
+        article["title"].include?(keyword) || article["content"].include?(keyword)
+      end
+    end    
   end
 
   def show

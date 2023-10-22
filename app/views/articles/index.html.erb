@@ -1,5 +1,12 @@
 <h1>Car News</h1>
 <%= link_to "トップページに戻る", homes_index_path %>
+
+<%= form_tag articles_path, method: :get do %>
+  <%= label_tag :q_title_or_content_cont, "検索:" %>
+  <%= text_field_tag :q_title_or_content_cont %>
+  <%= submit_tag "検索" %>
+<% end %>
+
 <div class="album py-5 bg-light">
   <div class="container">
     <div class="row">
