@@ -84,5 +84,3 @@ gem 'httparty'
 gem 'dotenv-rails'
 
 gem 'pry-rails'
-
-gem 'ransack'
