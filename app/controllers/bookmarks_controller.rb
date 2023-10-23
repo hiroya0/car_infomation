@@ -2,13 +2,18 @@ class BookmarksController < ApplicationController
   before_action :authenticate_user!
   include ApplicationHelper
 
+  def index
+    @bookmarks = current_user.bookmarks.includes(:article)
+  end
+
   def create
     hashed_url = params[:article_hashed_url]
     @article = Article.find_or_initialize_by(hashed_url: hashed_url)
-    if @article.new_record? 
-      @article.attributes = { url: params[:url], title: params[:title], content: params[:content], urlToImage: params[:urlToImage] }
+    if @article.new_record?
+      @article.attributes = { url: params[:url], title: params[:title], content: params[:content],
+                              urlToImage: params[:urlToImage] }
     end
-    
+
     if @article.save
       if Bookmark.exists?(user: current_user, article: @article)
         flash[:notice] = '記事は既にブックマークされています'
@@ -17,7 +22,7 @@ class BookmarksController < ApplicationController
         flash[:success] = '記事をブックマークしました'
       end
     end
-    redirect_to articles_path 
+    redirect_to articles_path
   end
 
   def destroy
@@ -27,14 +32,10 @@ class BookmarksController < ApplicationController
     redirect_to bookmarks_path
   end
 
-  def index
-    @bookmarks = current_user.bookmarks.includes(:article)
-  end
-
   private
 
   def fetch_articles
-    NewsApiService.fetch_car_news["articles"]
+    NewsApiService.fetch_car_news['articles']
   end
 
   def article_params
