@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   def index
     @comments = current_user.comments.includes(:article)

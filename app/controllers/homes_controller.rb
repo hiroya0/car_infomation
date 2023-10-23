@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HomesController < ApplicationController
   include ApplicationHelper
 

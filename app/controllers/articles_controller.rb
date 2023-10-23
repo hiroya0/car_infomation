@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ArticlesController < ApplicationController
   include ApplicationHelper
 
@@ -5,7 +7,7 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = fetch_articles
-    return unless params[:q_title_or_content_cont].present?
+    return if params[:q_title_or_content_cont].blank?
 
     keyword = params[:q_title_or_content_cont]
     @articles = @articles.select do |article|
