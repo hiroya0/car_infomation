@@ -36,11 +36,24 @@ class BookmarksController < ApplicationController
 
   private
 
-  def fetch_articles
-    NewsApiService.fetch_car_news['articles']
+  def find_or_initialize_article_from_params
+    Article.find_or_initialize_by(hashed_url: params[:article_hashed_url]).tap do |article|
+      article.attributes = params.slice(:url, :title, :content, :urlToImage) if article.new_record?
+    end
   end
 
-  def article_params
-    params.require(:article).permit(:hashed_url, :url, :title, :content, :urlToImage)
+  def save_article_and_create_bookmark
+    return unless @article.save
+
+    create_bookmark_or_set_flash
+  end
+
+  def create_bookmark_or_set_flash
+    if Bookmark.exists?(user: current_user, article: @article)
+      flash[:notice] = '記事は既にブックマークされています'
+    else
+      Bookmark.create(user: current_user, article: @article)
+      flash[:success] = '記事をブックマークしました'
+    end
   end
 end

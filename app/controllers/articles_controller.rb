@@ -6,7 +6,6 @@ class ArticlesController < ApplicationController
   before_action :fetch_articles, only: %i[index show]
 
   def index
-    @articles = fetch_articles
     return if params[:q_title_or_content_cont].blank?
 
     keyword = params[:q_title_or_content_cont]
@@ -16,27 +15,27 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @articles = fetch_articles
-    hashed_url = params[:id]
-    @article = @articles.find { |a| url_to_hash(a['url']) == hashed_url }
-    @article['hashed_url'] = hashed_url
-
-    @actual_article = Article.find_by(hashed_url: hashed_url)
-
-    @actual_article ||= Article.create(
-      hashed_url: hashed_url,
-      title: @article['title'],
-      content: @article['content'],
-      urlToImage: @article['urlToImage'],
-      url: @article['url']
-    )
-
-    @comment = @actual_article.comments.build
+    @article = find_or_create_article
+    @comment = @article.comments.build
   end
 
   private
 
   def fetch_articles
-    NewsApiService.fetch_car_news['articles']
+    @articles = NewsApiService.fetch_car_news['articles']
+  end
+
+  def find_or_create_article
+    hashed_url = params[:id]
+    article = @articles.find { |a| url_to_hash(a['url']) == hashed_url }
+    actual_article = Article.find_by(hashed_url: hashed_url)
+
+    actual_article || Article.create(
+      hashed_url: hashed_url,
+      title: article['title'],
+      content: article['content'],
+      urlToImage: article['urlToImage'],
+      url: article['url']
+    )
   end
 end
