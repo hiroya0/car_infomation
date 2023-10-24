@@ -10,14 +10,14 @@ class CommentsController < ApplicationController
     @comment = @article.comments.build(comment_params)
     @comment.user = current_user
     @comment.save
-    flash[:notice] = 'コメントを追加しました'
+    flash[:notice] = t('comments.add_success')
     redirect_to articles_path
   end
 
   def destroy
     comment = current_user.comments.find(params[:id])
     comment&.destroy
-    flash[:notice] = 'コメントを削除しました'
+    flash[:notice] = t('comments.delete_success')
     redirect_to comments_path
   end
 

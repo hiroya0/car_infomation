@@ -13,6 +13,9 @@ module CarInfomation
 
     config.autoload_paths << Rails.root.join('lib')
 
+    # Set the default locale to Japanese
+    config.i18n.default_locale = :ja
+    
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

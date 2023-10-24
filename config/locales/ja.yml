@@ -1,0 +1,8 @@
+ja:
+  bookmarks:
+    delete_success: 'ブックマークを削除しました'
+    already_bookmarked: '記事は既にブックマークされています'
+    bookmark_success: '記事をブックマークしました'
+  comments:
+    add_success: 'コメントを追加しました'
+    delete_success: 'コメントを削除しました'
