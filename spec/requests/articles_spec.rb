@@ -25,7 +25,7 @@ RSpec.describe "Articles", type: :request do
         let(:keyword) { "車" }
         let!(:article_with_keyword) { create(:article, title: "carinfo: #{keyword}") } 
   
-        it "キーワードに一致する記事を返す" do
+        it "キーワードに一致する記事を返すこと" do
           get "/articles", params: { q_title_or_content_cont: keyword }
           expect(response.body).to include(keyword)
         end
