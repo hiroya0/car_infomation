@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Articles' do
+RSpec.describe '記事一覧' do
   include ApplicationHelper
 
   before do
