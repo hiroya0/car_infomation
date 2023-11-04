@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'shoulda/matchers'
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
@@ -43,6 +44,9 @@ RSpec.configure do |config|
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
   config.include FactoryBot::Syntax::Methods
+
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::IntegrationHelpers, type: :request
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
