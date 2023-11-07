@@ -24,7 +24,7 @@ RSpec.describe '記事一覧' do
     context '検索情報がない時' do
       it '記事の一覧画面が表示されること' do
         get articles_path
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(:ok)
       end
 
       it '特定の記事タイトルが取得されていること' do
