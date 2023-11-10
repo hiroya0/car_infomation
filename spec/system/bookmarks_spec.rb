@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe "Bookmarks", type: :system do
-  let(:user) { create(:user) }
-  let!(:article) { create(:article) } 
-
-  before do
-    driven_by(:selenium_chrome_headless)
-    sign_in user
-  end
-
+    let(:user) { create(:user) }
+    let!(:article) { create(:article) } 
+  
+    before do
+      driven_by(:selenium_chrome_headless)
+      sign_in user
+    end
+    
   describe "ブックマーク一覧" do
     it "ユーザーが自分のブックマークを見ることができること" do
       create(:bookmark, user: user, article: article)
@@ -20,8 +20,11 @@ RSpec.describe "Bookmarks", type: :system do
 
   describe "ブックマークの作成" do
     it "ユーザーが新しいブックマークを作成できること" do
+      
       visit article_path(article)
-      click_button "Bookmark"
+      
+      expect(page).to have_button('Bookmark')
+      click_button "Bookmark"     
       expect(page).to have_current_path(articles_path)
     end
   end
