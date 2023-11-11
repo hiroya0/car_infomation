@@ -16,9 +16,9 @@ class ArticlesController < ApplicationController
 
   def show
     @article = find_or_create_article
-    if @article.is_a?(Article)
+    return unless @article.is_a?(Article)
+
     @comment = @article.comments.build
-    end
   end
 
   private
@@ -30,7 +30,7 @@ class ArticlesController < ApplicationController
   def find_or_create_article
     hashed_url = params[:id]
     article = @articles.find { |a| url_to_hash(a['url']) == hashed_url }
-  
+
     if article.present?
       actual_article = Article.find_by(hashed_url: hashed_url)
       actual_article || Article.create(
