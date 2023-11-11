@@ -52,10 +52,12 @@ RSpec.describe "Bookmarks", type: :system do
   
   describe "ブックマークの削除" do
     it "ユーザーがブックマークを削除できること", js: true do
+      article = Article.create!(title: article_data['title'], content: article_data['content'], url: article_data['url'], urlToImage: 
+        article_data['urlToImage'], hashed_url: article_data['hashed_url'])
       bookmark = create(:bookmark, user: user, article: article)
       visit bookmarks_path
       expect(page).to have_content article.title
-      find(".btn-outline-danger[data-method='delete'][href='#{bookmark_path(bookmark)}']").click
+      find(".btn.btn-sm.btn-outline-danger").click
       expect(page).not_to have_content article.title
     end
   end
