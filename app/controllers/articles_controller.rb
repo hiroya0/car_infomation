@@ -16,7 +16,9 @@ class ArticlesController < ApplicationController
 
   def show
     @article = find_or_create_article
+    if @article.is_a?(Article)
     @comment = @article.comments.build
+    end
   end
 
   private
@@ -28,8 +30,8 @@ class ArticlesController < ApplicationController
   def find_or_create_article
     hashed_url = params[:id]
     article = @articles.find { |a| url_to_hash(a['url']) == hashed_url }
-    
-    if article
+  
+    if article.present?
       actual_article = Article.find_by(hashed_url: hashed_url)
       actual_article || Article.create(
         hashed_url: hashed_url,
@@ -40,7 +42,7 @@ class ArticlesController < ApplicationController
       )
     else
       flash[:alert] = '記事が見つかりませんでした。'
-      redirect_to articles_path
+      redirect_to articles_path and return
     end
   end
 end
