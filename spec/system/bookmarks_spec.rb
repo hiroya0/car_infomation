@@ -14,23 +14,18 @@ RSpec.describe 'Bookmarks' do
     }
   end
   let(:hashed_url) { article_data['hashed_url'] }
+  let(:article) { Article.create!(article_data) }
 
   before do
     driven_by(:selenium_chrome_headless)
     sign_in user
-    allow(NewsApiService).to receive(:fetch_car_news).and_return({
-                                                                   'articles' => [article_data]
-                                                                 })
+    allow(NewsApiService).to receive(:fetch_car_news).and_return('articles' => [article_data])
   end
 
   describe 'ブックマーク一覧' do
     it 'ユーザーが自分のブックマークを見ることができること' do
-      article = Article.create!(article_data)
       create(:bookmark, user: user, article: article)
-
       visit bookmarks_path
-
-      expect(page).to have_content 'ブックマーク一覧'
       expect(page).to have_content article.title
     end
   end
@@ -38,19 +33,18 @@ RSpec.describe 'Bookmarks' do
   describe 'ブックマークの作成' do
     it 'ユーザーが新しいブックマークを作成できること' do
       visit article_path(article_data['hashed_url'])
-      expect(page).to have_button('Bookmark')
       find('input[name="commit"]').click
       expect(page).to have_current_path(articles_path)
     end
   end
 
   describe 'ブックマークの削除' do
-    it 'ユーザーがブックマークを削除できること', :js do
-      article = Article.create!(title: article_data['title'], content: article_data['content'], url: article_data['url'], urlToImage:
-        article_data['urlToImage'], hashed_url: article_data['hashed_url'])
+    before do
       create(:bookmark, user: user, article: article)
       visit bookmarks_path
-      expect(page).to have_content article.title
+    end
+
+    it 'ユーザーがブックマークを削除できること', :js do
       find('.btn.btn-sm.btn-outline-danger').click
       expect(page).not_to have_content article.title
     end

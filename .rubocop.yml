@@ -12,5 +12,9 @@ AllCops:
     - 'tmp/**/*'
     - 'vendor/**/*'
 
+MethodLength:
+  CountComments: true
+  Max: 25
+  
 Style/Documentation:
   Enabled: false
