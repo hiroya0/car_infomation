@@ -37,16 +37,9 @@ RSpec.describe 'Bookmarks' do
 
   describe 'ブックマークの作成' do
     it 'ユーザーが新しいブックマークを作成できること' do
-      # 記事詳細ページに移動
       visit article_path(article_data['hashed_url'])
-
-      # Bookmark ボタンが存在するか確認
       expect(page).to have_button('Bookmark')
-
-      # Bookmark ボタンをクリック
       find('input[name="commit"]').click
-
-      # 記事一覧ページにリダイレクトされたことを検証
       expect(page).to have_current_path(articles_path)
     end
   end
