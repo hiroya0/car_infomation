@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = find_or_create_article
+    @article = article_function
     return unless @article.is_a?(Article)
 
     @comment = @article.comments.build
@@ -27,7 +27,7 @@ class ArticlesController < ApplicationController
     @articles = NewsApiService.fetch_car_news['articles']
   end
 
-  def find_or_create_article
+  def article_function
     hashed_url = params[:id]
     article = @articles.find { |a| url_to_hash(a['url']) == hashed_url }
 
@@ -41,7 +41,7 @@ class ArticlesController < ApplicationController
         url: article['url']
       )
     else
-      flash[:alert] = '記事が見つかりませんでした。'
+      flash[:alert] = t('article_not_found')
       redirect_to articles_path and return
     end
   end

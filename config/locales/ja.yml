@@ -6,3 +6,5 @@ ja:
   comments:
     add_success: 'コメントを追加しました'
     delete_success: 'コメントを削除しました'
+  articles:
+    article_not_found: '記事が見つかりませんでした'

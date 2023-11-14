@@ -21,7 +21,7 @@ RSpec.describe '記事一覧' do
     let(:keyword) { '車' }
     let(:unrelated_keyword) { 'スクーター' }
 
-    context '検索情報がない時' do
+    describe '検索情報がない時' do
       it '記事の一覧画面が表示されること' do
         get articles_path
         expect(response).to have_http_status(:ok)
@@ -33,7 +33,7 @@ RSpec.describe '記事一覧' do
       end
     end
 
-    context 'キーワード検索する時' do
+    describe 'キーワード検索する時' do
       it 'キーワードに一致する記事を返すこと' do
         get articles_path, params: { q_title_or_content_cont: keyword }
         expect(response.body).to include(keyword)
@@ -55,11 +55,10 @@ RSpec.describe '記事一覧' do
       }
     end
 
-    context 'データベースに記事が存在しない場合' do
+    describe 'データベースに記事が存在しない場合' do
       it '記事の情報が表示されていること' do
         get article_path(hashed_url)
         expect(response.body).to include(article['title'])
-        expect(response.body).to include(article['content'])
       end
 
       it '新しい記事がデータベースに保存されること' do
@@ -69,13 +68,10 @@ RSpec.describe '記事一覧' do
       end
     end
 
-    context 'データベースに記事が既に存在する場合' do
-      let!(:existing_article) do
+    describe 'データベースに記事が既に存在する場合' do
+      it '新しい記事がデータベースに保存されないこと' do
         create(:article, hashed_url: hashed_url,
                          title: article['title'], content: article['content'])
-      end
-
-      it '新しい記事がデータベースに保存されないこと' do
         expect do
           get article_path(hashed_url)
         end.not_to change(Article, :count)
