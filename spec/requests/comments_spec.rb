@@ -14,25 +14,25 @@ RSpec.describe 'コメント' do
 
     it '新しいコメントを作成する' do
       expect do
-        post :create, params: { article_id: article.id, comment: comment_params }
+        post article_comments_path(article), params: { comment: comment_params }
       end.to change(Comment, :count).by(1)
     end
 
     it '記事一覧ページにリダイレクトする' do
-      post :create, params: { article_id: article.id, comment: comment_params }
-      expect(response).to redirect_to(articles_path)
+      post article_comments_path(article), params: { comment: comment_params }
+      expect(response).to redirect_to articles_path
     end
   end
 
   describe 'DELETE #destroy' do
     it 'コメントを削除する' do
       expect do
-        delete :destroy, params: { id: comment.id }
+        delete comment_path(comment)
       end.to change(Comment, :count).by(-1)
     end
 
     it 'コメント一覧ページにリダイレクトする' do
-      delete :destroy, params: { id: comment.id }
+      delete comment_path(comment)
       expect(response).to redirect_to(comments_path)
     end
   end

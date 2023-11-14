@@ -23,7 +23,7 @@ RSpec.describe 'Bookmarks' do
   end
 
   describe 'ブックマーク一覧' do
-    it 'ユーザーが自分のブックマークを見ることができること' do
+    it 'ユーザーが自分のブックマークを見ることができる' do
       create(:bookmark, user: user, article: article)
       visit bookmarks_path
       expect(page).to have_content article.title
@@ -31,9 +31,12 @@ RSpec.describe 'Bookmarks' do
   end
 
   describe 'ブックマークの作成' do
-    it 'ユーザーが新しいブックマークを作成できること' do
+    before do
       visit article_path(article_data['hashed_url'])
       find('input[name="commit"]').click
+    end
+
+    it 'ユーザーが新しいブックマークを作成できる' do
       expect(page).to have_current_path(articles_path)
     end
   end
@@ -44,7 +47,7 @@ RSpec.describe 'Bookmarks' do
       visit bookmarks_path
     end
 
-    it 'ユーザーがブックマークを削除できること', :js do
+    it 'ユーザーがブックマークを削除できる', :js do
       find('.btn.btn-sm.btn-outline-danger').click
       expect(page).not_to have_content article.title
     end

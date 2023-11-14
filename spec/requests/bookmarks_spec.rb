@@ -7,65 +7,49 @@ RSpec.describe 'ブックマーク' do
   let(:article) { create(:article) }
 
   describe 'GET /index' do
-    context 'ユーザーが認証されている場合' do
-      before { sign_in user }
+    before do
+      sign_in user
+      get bookmarks_path
+    end
 
-      it 'ブックマーク一覧を表示する' do
-        get bookmarks_path
-        expect(response).to have_http_status(:ok)
-      end
+    it 'レスポンスが成功すること' do
+      expect(response).to have_http_status(:ok)
     end
   end
 
   describe 'POST /create' do
-    context 'ユーザーが認証されている場合' do
-      before { sign_in user }
+    let(:bookmark_params) do
+      {
+        article_hashed_url: article.hashed_url,
+        url: 'https://example.com',
+        title: '記事のタイトル',
+        content: '記事のコンテンツ'
+      }
+    end
 
-      it '新しいブックマークを作成する' do
-        expect do
-          post bookmarks_path, params: {
-            article_hashed_url: article.hashed_url,
-            url: 'https://example.com',
-            title: '記事のタイトル',
-            content: '記事のコンテンツ'
-          }
-        end.to change(Bookmark, :count).by(1)
-      end
+    before { sign_in user }
 
-      it 'ブックマークが既に存在する場合は作成しない' do
-        create(:bookmark, user: user, article: article)
-        expect do
-          post bookmarks_path, params: {
-            article_hashed_url: article.hashed_url,
-            url: 'https://example.com',
-            title: '記事のタイトル',
-            content: '記事のコンテンツ'
-          }
-        end.not_to change(Bookmark, :count)
-      end
+    it '新しいブックマークを作成する' do
+      expect { post bookmarks_path, params: bookmark_params }.to change(Bookmark, :count).by(1)
+    end
+
+    it 'ブックマークが既に存在する場合は作成しない' do
+      create(:bookmark, user: user, article: article)
+      expect { post bookmarks_path, params: bookmark_params }.not_to change(Bookmark, :count)
     end
   end
 
   describe 'DELETE /destroy' do
     let!(:bookmark) { create(:bookmark, user: user, article: article) }
 
-    context 'ユーザーが認証されている場合' do
-      before { sign_in user }
-
-      it 'ブックマークを削除する' do
-        expect do
-          delete bookmark_path(bookmark)
-        end.to change(Bookmark, :count).by(-1)
-      end
+    it '認証されたユーザーがブックマークを削除する' do
+      sign_in user
+      expect { delete bookmark_path(bookmark) }.to change(Bookmark, :count).by(-1)
     end
 
-    context 'ユーザーが認証されていない場合' do
-      it 'ブックマークの削除を許可しない' do
-        expect do
-          delete bookmark_path(bookmark)
-        end.not_to change(Bookmark, :count)
-        expect(response).to redirect_to(new_user_session_path)
-      end
+    it '未認証のユーザーに対してブックマークの削除を許可しない' do
+      delete bookmark_path(bookmark)
+      expect(response).to redirect_to(new_user_session_path)
     end
   end
 end
