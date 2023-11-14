@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe CommentsController, type: :controller do
+RSpec.describe 'コメント' do
   let(:user) { create(:user) }
   let(:article) { create(:article) }
   let!(:comment) { create(:comment, user: user, article: article) }

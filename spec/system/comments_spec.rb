@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Bookmarks' do
+RSpec.describe 'Comments' do
   let(:user) { create(:user) }
   let(:article_data) do
     {
@@ -13,7 +13,15 @@ RSpec.describe 'Bookmarks' do
       'hashed_url' => Digest::SHA256.hexdigest('http://example.com/article')[0..15]
     }
   end
-  let(:hashed_url) { article_data['hashed_url'] }
+  let(:article) do
+    Article.create!(
+      title: article_data['title'],
+      content: article_data['content'],
+      url: article_data['url'],
+      urlToImage: article_data['urlToImage'],
+      hashed_url: article_data['hashed_url']
+    )
+  end
 
   before do
     driven_by(:selenium_chrome_headless)
@@ -34,8 +42,6 @@ RSpec.describe 'Bookmarks' do
 
   describe 'コメントの表示' do
     it '記事に対するすべてのコメントが表示される' do
-      article = Article.create!(title: article_data['title'], content: article_data['content'], url: article_data['url'], urlToImage:
-          article_data['urlToImage'], hashed_url: article_data['hashed_url'])
       create(:comment, article: article, user: user, content: 'いい車')
       visit homes_index_path
       expect(page).to have_content 'いい車'
@@ -44,8 +50,6 @@ RSpec.describe 'Bookmarks' do
 
   describe 'コメントの削除' do
     it 'ユーザーが自分のコメントを削除できる' do
-      article = Article.create!(title: article_data['title'], content: article_data['content'], url: article_data['url'], urlToImage:
-          article_data['urlToImage'], hashed_url: article_data['hashed_url'])
       create(:comment, article: article, user: user, content: 'いい車')
       visit comments_path
       find('.btn.btn-sm.btn-outline-danger').click
