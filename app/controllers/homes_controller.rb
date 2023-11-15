@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HomesController < ApplicationController
   include ApplicationHelper
 
@@ -7,6 +9,6 @@ class HomesController < ApplicationController
   end
 
   def fetch_articles
-    NewsApiService.fetch_car_news["articles"]
+    NewsApiService.fetch_car_news['articles']
   end
 end

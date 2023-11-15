@@ -1,0 +1,23 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'db/**/*'
+    - 'node_modules/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+
+MethodLength:
+  CountComments: true
+  Max: 25
+  
+Style/Documentation:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 20

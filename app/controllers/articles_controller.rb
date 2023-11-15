@@ -1,42 +1,48 @@
+# frozen_string_literal: true
+
 class ArticlesController < ApplicationController
   include ApplicationHelper
 
-  before_action :fetch_articles, only: [:index, :show]
+  before_action :fetch_articles, only: %i[index show]
 
   def index
-    @articles = fetch_articles
-    if params[:q_title_or_content_cont].present?
-      keyword = params[:q_title_or_content_cont]
-      @articles = @articles.select do |article|
-        article["title"].include?(keyword) || article["content"].include?(keyword)
-      end
-    end    
+    return if params[:q_title_or_content_cont].blank?
+
+    keyword = params[:q_title_or_content_cont]
+    @articles = @articles.select do |article|
+      article['title'].include?(keyword) || article['content'].include?(keyword)
+    end
   end
 
   def show
-    @articles = fetch_articles
-    hashed_url = params[:id]
-    @article = @articles.find { |a| url_to_hash(a["url"]) == hashed_url }
-    @article["hashed_url"] = hashed_url
+    @article = article_function
+    return unless @article.is_a?(Article)
 
-    @actual_article = Article.find_by(hashed_url: hashed_url)
-    
-    unless @actual_article
-      @actual_article = Article.create(
-        hashed_url: hashed_url,
-        title: @article["title"],
-        content: @article["content"],
-        urlToImage: @article["urlToImage"],
-        url: @article["url"]
-      )
-    end
-
-    @comment = @actual_article.comments.build
+    @comment = @article.comments.build
   end
 
   private
 
   def fetch_articles
-    NewsApiService.fetch_car_news["articles"]
+    @articles = NewsApiService.fetch_car_news['articles']
+  end
+
+  def article_function
+    hashed_url = params[:id]
+    article = @articles.find { |a| url_to_hash(a['url']) == hashed_url }
+
+    if article.present?
+      actual_article = Article.find_by(hashed_url: hashed_url)
+      actual_article || Article.create(
+        hashed_url: hashed_url,
+        title: article['title'],
+        content: article['content'],
+        urlToImage: article['urlToImage'],
+        url: article['url']
+      )
+    else
+      flash[:alert] = t('article_not_found')
+      redirect_to articles_path and return
+    end
   end
 end
