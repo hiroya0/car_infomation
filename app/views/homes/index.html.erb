@@ -11,25 +11,34 @@
   </div>
 </a>
 
-<header>
-  <div class="bg-dark">
+<header class="header-large bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <div class="row">
-        <div class="col-sm-8 col-md-7 py-4">
-          <h4 class="text-white">About</h4>
-        </div>
-        <div class="col py-4 d-flex justify-content-end">
-          <div class="d-flex flex-row align-items-center">
-            <p class="mx-2"><%= link_to '投稿一覧', comments_path %></p>
-            <p class="mx-2"><%= link_to 'ブックマーク一覧', bookmarks_path %></p>
-            <p class="mx-2"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
-            <h4 class="mx-2 text-white"><%= current_user.username %></h4>
-          </div>
-        </div>
+      <a class="navbar-brand" href="#">About</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" 
+      aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item my-2"><%= link_to '投稿一覧', comments_path, class: "text-white mx-2" %></li>
+          <li class="nav-item my-2"><%= link_to 'ブックマーク一覧', bookmarks_path, class: "text-white mx-2" %></li>
+          <li class="nav-item my-2"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white mx-2" %></li>
+          <li class="nav-item my-2"><span class="mx-2 text-white"><%= current_user.username %></span></li>
+        </ul>
       </div>
     </div>
-  </div>
+  </nav>
 </header>
+
+<style>
+.header-large {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+</style>
+
 
 
 <main role="main">
@@ -82,7 +91,9 @@
 </footer>
   </body>
 </html>
+
 <% else %>
+
 <!doctype html>
 <html lang="ja" >
   <head>
@@ -95,34 +106,31 @@
   </div>
 </a>
 
-<header>
-  <div class="collapse bg-dark" id="navbarHeader">
+<header class="header-large bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <div class="row">
-        <div class="col-sm-8 col-md-7 py-4">
-          <h4 class="text-white">About</h4>
-          <p class="text-muted">謦ｮ蠖ｱ閠�ｄ謦ｮ蠖ｱ縺励◆閭梧勹縺ｪ縺ｩ, 繧｢繝ｫ繝舌Β縺ｫ髢｢縺吶ｋ諠��ｱ繧定ｿｽ蜉�縺励∪縺励ｇ縺�ゅ＞縺上▽縺九�譁�ｒ譖ｸ縺�※縺翫￥縺ｨ, 蜿矩＃縺悟�逵溘ｒ驕ｸ縺ｶ謇句勧縺代↓縺ｪ繧九°繧ゅ＠繧後∪縺帙ｓ縲ゅ∪縺�, 蜀咏悄縺ｯ SNS 繧�｣邨｡蜈医∈縺ｨ繝ｪ繝ｳ繧ｯ縺励※縺翫″縺ｾ縺励ｇ縺��</p>
-        </div>
-        <div class="col-sm-4 offset-md-1 py-4">
-          <h4 class="text-white"></h4>
-          <p><%= link_to "ログイン", "/users/sign_in" %></p>
-          <p><%= link_to "新規登録", "/users/sign_up" %></p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="navbar navbar-dark bg-dark shadow-sm">
-    <div class="container d-flex justify-content-between">
-      <a href="#" class="navbar-brand d-flex align-items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
-        <!-- <strong>Album</strong> -->
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand" href="#">About</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" 
+      aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item my-2"><%= link_to "ログイン", "/users/sign_in", class: "text-white mx-2" %></li>
+          <li class="nav-item my-2"><%= link_to "新規登録", "/users/sign_up", class: "text-white mx-2" %></li>
+        </ul>
+      </div>
     </div>
-  </div>
+  </nav>
 </header>
+
+<style>
+.header-large {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+</style>
 
 <main role="main">
 
@@ -167,9 +175,9 @@
 
 </main>
 
-<footer class="p-3 mb-2 bg-dark text-white">
+<footer class="p-3  bg-dark text-white">
     <div class="container">
-        <p>
+        <p class = "text-right">
           <a href="#" class="text-white">ページトップへ</a>
         </p>
     </div>
