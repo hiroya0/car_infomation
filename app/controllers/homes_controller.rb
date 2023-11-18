@@ -4,7 +4,9 @@ class HomesController < ApplicationController
   include ApplicationHelper
 
   def index
-    @articles = Article.order(created_at: :desc).limit(10)
+    @articles = fetch_articles
+    @articles.sort_by! { |article| article['publishedAt'] }.reverse!
+    @articles = @articles.first(10)
   end
 
   def fetch_articles
