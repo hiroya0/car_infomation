@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_09_145327) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_18_045717) do
   create_table "articles", force: :cascade do |t|
     t.string "hashed_url"
     t.string "title"
@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_09_145327) do
     t.datetime "updated_at", null: false
     t.string "urlToImage"
     t.string "url"
+    t.integer "views_count", default: 0
   end
 
   create_table "bookmarks", force: :cascade do |t|
