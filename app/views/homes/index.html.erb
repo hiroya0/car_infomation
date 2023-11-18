@@ -14,7 +14,7 @@
 <header class="header-large bg-dark">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="#">About</a>
+      <a class="navbar-brand">CarInfomation</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" 
       aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -57,21 +57,22 @@
 
 <div class="album py-5 bg-light">
   <div class="container">
-  <h2>コメント一覧</h2>
     <div class="row">
-      <% @commented_articles.each do |article| %>
-        <div class="col-md-4">
-          <div class="card mt-4">
-            <h3><%= article.title %></h3>
-            <img src="<%= article.urlToImage %>" alt="Article image" />
-            <p><%= article.content %></p>
-            <a href="<%= article.url %>">Read more</a>
-            <div class="comments mt-4">
-              <h4>コメント</h4>
-              <% article.comments.each do |comment| %>
-                <p><%= comment.user.username %>: <%= comment.content %>
-                <small class="text-muted"><%= comment.created_at %></small></p>
-              <% end %>
+      <% @articles.each do |article| %>
+        <div class="col-12 mb-3">
+          <div class="card flex-md-row h-100">
+            <div class="col-md-5">
+              <img src="<%= article.urlToImage %>" alt="Article image" class="w-100 h-100" style="object-fit: cover;">
+            </div>
+            <div class="col-md-7">
+              <div class="card-body">
+                <h3 class="mb-0">
+                  <a class="text-dark" href="<%= article.url %>"><%= article.title %></a>
+                </h3>
+                <div class="mb-1 text-muted">
+                  <%= article.created_at.strftime('%-m月%-d日（%a）') %>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -79,6 +80,9 @@
     </div>
   </div>
 </div>
+
+
+
 
 </main>
 
@@ -109,7 +113,7 @@
 <header class="header-large bg-dark">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="#">About</a>
+      <a class="navbar-brand">CarInfomation</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" 
       aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

@@ -4,8 +4,7 @@ class HomesController < ApplicationController
   include ApplicationHelper
 
   def index
-    @commented_articles = Article.joins(:comments).distinct
-    @comments = Comment.includes(:user, :article).all
+    @articles = Article.order(created_at: :desc).limit(10)
   end
 
   def fetch_articles
