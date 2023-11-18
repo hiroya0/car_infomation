@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_18_094656) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_18_103105) do
   create_table "articles", force: :cascade do |t|
     t.string "hashed_url"
     t.string "title"
@@ -21,6 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_18_094656) do
     t.string "url"
     t.integer "views_count", default: 0
     t.integer "comments_count", default: 0, null: false
+    t.integer "bookmarks_count", default: 0
   end
 
   create_table "bookmarks", force: :cascade do |t|

@@ -46,7 +46,7 @@
   <section class="jumbotron text-center">
     <div class="container">
       <h1 class="jumbotron-heading">車をもっと知ろう</h1>
-      <p class="lead text-muted">当アプリは車の情報を素早く検索、みんなと共有できる特化型の情報検索アプリです</p>
+      <p class="lead text-muted">当アプリは車の情報を素早く検索、みんなと共有できる車特化の情報検索アプリです</p>
       <p>
         <%= link_to "現在の最新ニュースを確認する",articles_index_path,class:"btn btn-primary my-2"%>
       </p>
@@ -77,26 +77,47 @@
       </div>
 
       <div class="col-lg-4">
-        <h5 class="mb-3">このような記事が見られてます</h5>
-          <% @top_articles.each do |article| %>
-            <div class="media mb-3">
-              <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
-              <div class="media-body">
-                <h5 class="mt-0"><%= link_to article['title'], article_path(url_to_hash(article["url"])) %></h5>
-              </div>
-            </div>
-          <% end %>
-        <h5 class="mb-3">コメントされた記事</h5>
-          <% @top_commented_articles.each do |article| %>
-            <div class="media mb-3">
-              <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
-              <div class="media-body">
-                <h5 class="mt-0"><%= link_to article['title'], article_path(url_to_hash(article["url"])) %></h5>
-                <small class="text-muted"><%= pluralize(article.comments.count, 'コメント') %></small>
-              </div>
-            </div>
-          <% end %>
+  <h5 class="mb-3">アクセスランキング</h5>
+  <% top_article_count = 0 %>
+  <% @top_articles.each do |article| %>
+    <% top_article_count += 1 %>
+    <div class="media mb-3">
+      <span class="badge badge-primary mr-2"><%= top_article_count %></span>
+      <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
+      <div class="media-body">
+        <h5 class="mt-0"><%= link_to article['title'], article_path(url_to_hash(article["url"])) %></h5>
       </div>
+    </div>
+  <% end %>
+
+  <h5 class="mb-3">コメントランキング</h5>
+  <% top_commented_article_count = 0 %>
+  <% @top_commented_articles.each do |article| %>
+    <% top_commented_article_count += 1 %>
+    <div class="media mb-3">
+      <span class="badge badge-primary mr-2"><%= top_commented_article_count %></span>
+      <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
+      <div class="media-body">
+        <h5 class="mt-0"><%= link_to article['title'], article_path(url_to_hash(article["url"])) %></h5>
+        <small class="text-muted"><%= pluralize(article.comments.count, 'コメント') %></small>
+      </div>
+    </div>
+  <% end %>
+
+  <h5 class="mb-3">ブックマークランキング</h5>
+  <% top_bookmarked_article_count = 0 %>
+  <% @top_bookmarked_articles.each do |article| %>
+    <% top_bookmarked_article_count += 1 %>
+    <div class="media mb-3">
+      <span class="badge badge-primary mr-2"><%= top_bookmarked_article_count %></span>
+      <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
+      <div class="media-body">
+        <h5 class="mt-0"><%= link_to article['title'], article_path(url_to_hash(article["url"])) %></h5>
+      </div>
+    </div>
+  <% end %>
+</div>
+
     </div>
   </div>
 </div>
@@ -187,17 +208,47 @@
         <% end %>
       </div>
 
-      <div class="col-lg-4">
-        <h5 class="mb-3">このような記事が見られてます</h5>
-        <% @top_articles.each do |article| %>
-          <div class="media mb-3">
-            <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
-            <div class="media-body">
-              <h5 class="mt-0"><%= link_to article.title, article_path(url_to_hash(article["url"])) %></h5>
-            </div>
-          </div>
-        <% end %>
+       <div class="col-lg-4">
+  <h5 class="mb-3">アクセスランキング</h5>
+  <% top_article_count = 0 %>
+  <% @top_articles.each do |article| %>
+    <% top_article_count += 1 %>
+    <div class="media mb-3">
+      <span class="badge badge-primary mr-2"><%= top_article_count %></span>
+      <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
+      <div class="media-body">
+        <h5 class="mt-0"><%= link_to article['title'], article_path(url_to_hash(article["url"])) %></h5>
       </div>
+    </div>
+  <% end %>
+
+  <h5 class="mb-3">コメントランキング</h5>
+  <% top_commented_article_count = 0 %>
+  <% @top_commented_articles.each do |article| %>
+    <% top_commented_article_count += 1 %>
+    <div class="media mb-3">
+      <span class="badge badge-primary mr-2"><%= top_commented_article_count %></span>
+      <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
+      <div class="media-body">
+        <h5 class="mt-0"><%= link_to article['title'], article_path(url_to_hash(article["url"])) %></h5>
+        <small class="text-muted"><%= pluralize(article.comments.count, 'コメント') %></small>
+      </div>
+    </div>
+  <% end %>
+
+  <h5 class="mb-3">ブックマークランキング</h5>
+  <% top_bookmarked_article_count = 0 %>
+  <% @top_bookmarked_articles.each do |article| %>
+    <% top_bookmarked_article_count += 1 %>
+    <div class="media mb-3">
+      <span class="badge badge-primary mr-2"><%= top_bookmarked_article_count %></span>
+      <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
+      <div class="media-body">
+        <h5 class="mt-0"><%= link_to article['title'], article_path(url_to_hash(article["url"])) %></h5>
+      </div>
+    </div>
+  <% end %>
+</div>
     </div>
   </div>
 </div>

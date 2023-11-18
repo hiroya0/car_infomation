@@ -13,6 +13,10 @@ class HomesController < ApplicationController
     @top_commented_articles = Article.where('comments_count > ?', 0)
                                    .order(comments_count: :desc)
                                    .limit(5)
+
+    @top_bookmarked_articles = Article.where('bookmarks_count > ?', 0)
+                                  .order(bookmarks_count: :desc)
+                                  .limit(5)                              
   end
 
   private
