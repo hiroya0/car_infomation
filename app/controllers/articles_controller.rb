@@ -16,8 +16,9 @@ class ArticlesController < ApplicationController
 
   def show
     @article = article_function
-    return unless @article.is_a?(Article)
+    return unless @article
 
+    @article.increment_view_count
     @comment = @article.comments.build
   end
 

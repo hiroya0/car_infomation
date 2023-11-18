@@ -45,9 +45,7 @@
 
   <section class="jumbotron text-center">
     <div class="container">
-      <!-- <h1 class="jumbotron-heading">Album example</h1> -->
       <h1 class="jumbotron-heading">車をもっと知ろう</h1>
-      <!-- <p class="lead text-muted">Something short and leading about the collection below窶琶ts contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p> -->
       <p class="lead text-muted">当アプリは車の情報を素早く検索、みんなと共有できる特化型の情報検索アプリです</p>
       <p>
         <%= link_to "現在の最新ニュースを確認する",articles_index_path,class:"btn btn-primary my-2"%>
@@ -56,18 +54,18 @@
   </section>
 
 <div class="album py-5 bg-light">
-  <div class="container">
+  <div class="container"> 
     <div class="row">
-      <% @articles.each do |article| %>
-        <div class="col-12 mb-3">
-          <div class="card flex-md-row">
-            <div class="col-md-4">             
+      <div class="col-lg-8 mb-3">
+        <% @articles.each do |article| %>
+          <div class="card flex-md-row mb-3">
+            <div class="col-md-4">
               <img src="<%= article['urlToImage'] %>" alt="イラスト挿入" class="w-100 h-auto">
             </div>
             <div class="col-md-8">
               <div class="card-body">
                 <h5 class="mb-0">
-                  <a class="text-dark" href="<%= article['url'] %>"><%= article['title'] %></a>
+                  <h5 class="mt-0"><%= link_to article['title'], article_path(url_to_hash(article["url"])) %></h5>
                 </h5>
                 <p class="mb-1 text-muted">
                    <%= Time.parse(article['publishedAt']).strftime('%Y年%m月%d日') %>
@@ -75,12 +73,33 @@
               </div>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
+
+      <div class="col-lg-4">
+        <h5 class="mb-3">このような記事が見られてます</h5>
+          <% @top_articles.each do |article| %>
+            <div class="media mb-3">
+              <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
+              <div class="media-body">
+                <h5 class="mt-0"><%= link_to article['title'], article_path(url_to_hash(article["url"])) %></h5>
+              </div>
+            </div>
+          <% end %>
+        <h5 class="mb-3">コメントされた記事</h5>
+          <% @top_commented_articles.each do |article| %>
+            <div class="media mb-3">
+              <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
+              <div class="media-body">
+                <h5 class="mt-0"><%= link_to article['title'], article_path(url_to_hash(article["url"])) %></h5>
+                <small class="text-muted"><%= pluralize(article.comments.count, 'コメント') %></small>
+              </div>
+            </div>
+          <% end %>
+      </div>
     </div>
   </div>
 </div>
-
 </main>
 
 <footer class="p-3  bg-dark text-white">
@@ -137,9 +156,7 @@
 
   <section class="jumbotron text-center">
     <div class="container">
-      <!-- <h1 class="jumbotron-heading">Album example</h1> -->
       <h1 class="jumbotron-heading">車をもっと知ろう</h1>
-      <!-- <p class="lead text-muted">Something short and leading about the collection below窶琶ts contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p> -->
       <p class="lead text-muted">当アプリは車の情報を素早く検索、みんなと共有できる特化型の情報検索アプリです</p>
       <p>
         <%= link_to "現在の最新ニュースを確認する",articles_index_path,class:"btn btn-primary my-2"%>
@@ -148,18 +165,18 @@
   </section>
 
 <div class="album py-5 bg-light">
-  <div class="container">
+  <div class="container"> 
     <div class="row">
-      <% @articles.each do |article| %>
-        <div class="col-12 mb-3">
-          <div class="card flex-md-row">
-            <div class="col-md-4">             
+      <div class="col-lg-8 mb-3">
+        <% @articles.each do |article| %>
+          <div class="card flex-md-row mb-3">
+            <div class="col-md-4">
               <img src="<%= article['urlToImage'] %>" alt="イラスト挿入" class="w-100 h-auto">
             </div>
             <div class="col-md-8">
               <div class="card-body">
                 <h5 class="mb-0">
-                  <a class="text-dark" href="<%= article['url'] %>"><%= article['title'] %></a>
+                  <h5 class="mt-0"><%= link_to article['title'], article_path(url_to_hash(article["url"])) %></h5>
                 </h5>
                 <p class="mb-1 text-muted">
                    <%= Time.parse(article['publishedAt']).strftime('%Y年%m月%d日') %>
@@ -167,12 +184,23 @@
               </div>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
+
+      <div class="col-lg-4">
+        <h5 class="mb-3">このような記事が見られてます</h5>
+        <% @top_articles.each do |article| %>
+          <div class="media mb-3">
+            <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
+            <div class="media-body">
+              <h5 class="mt-0"><%= link_to article.title, article_path(url_to_hash(article["url"])) %></h5>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
-
 </main>
 
 <footer class="p-3  bg-dark text-white">
