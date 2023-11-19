@@ -7,5 +7,6 @@ class Article < ApplicationRecord
 
   def increment_view_count
     increment(:views_count)
+    save
   end
 end

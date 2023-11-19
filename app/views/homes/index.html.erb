@@ -95,7 +95,7 @@
          class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;" %>
       <% end %>
       <div class="media-body">
-        <h5 class="mt-0"><%= link_to article.title, article_path(article) %></h5>
+        <h5 class="mt-0"><%= link_to article['title'], article_path(url_to_hash(article['url'])) %></h5>
       </div>
     </div>
   <% end %>
@@ -113,7 +113,7 @@
          class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;" %>
       <% end %>
       <div class="media-body">
-        <h5 class="mt-0"><%= link_to article.title, article_path(article) %></h5>
+        <h5 class="mt-0"><%= link_to article['title'], article_path(url_to_hash(article['url'])) %></h5>
         <small class="text-muted"><%= pluralize(article.comments.count, 'コメント') %></small>
       </div>
     </div>
@@ -132,7 +132,7 @@
          class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;" %>
       <% end %>
       <div class="media-body">
-        <h5 class="mt-0"><%= link_to article.title, article_path(article) %></h5>
+        <h5 class="mt-0"><%= link_to article['title'], article_path(url_to_hash(article['url'])) %></h5>
       </div>
     </div>
   <% end %>
@@ -246,7 +246,7 @@
          class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;" %>
       <% end %>
       <div class="media-body">
-        <h5 class="mt-0"><%= link_to article.title, article_path(article) %></h5>
+        <h5 class="mt-0"><%= link_to article['title'], article_path(url_to_hash(article['url'])) %></h5>
       </div>
     </div>
   <% end %>
@@ -264,7 +264,7 @@
          class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;" %>
       <% end %>
       <div class="media-body">
-        <h5 class="mt-0"><%= link_to article.title, article_path(article) %></h5>
+        <h5 class="mt-0"><%= link_to article['title'], article_path(url_to_hash(article['url'])) %></h5>
         <small class="text-muted"><%= pluralize(article.comments.count, 'コメント') %></small>
       </div>
     </div>
@@ -283,7 +283,7 @@
          class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;" %>
       <% end %>
       <div class="media-body">
-        <h5 class="mt-0"><%= link_to article.title, article_path(article) %></h5>
+        <h5 class="mt-0"><%= link_to article['title'], article_path(url_to_hash(article['url'])) %></h5>
       </div>
     </div>
   <% end %>
