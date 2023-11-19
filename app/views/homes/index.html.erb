@@ -60,12 +60,17 @@
         <% @articles.each do |article| %>
           <div class="card flex-md-row mb-3">
             <div class="col-md-4">
-              <img src="<%= article['urlToImage'] %>" alt="イラスト挿入" class="w-100 h-auto">
+              <% if article['urlToImage'].present? %>
+                <img src="<%= article['urlToImage'] %>" alt="Article image" class="w-100 h-auto">
+              <% else %>
+                <%= image_tag 'https://1.bp.blogspot.com/-KdH7RagOZ2I/XZR9MV_KcMI/AAAAAAABVP4/EDGln4k4HSAI00vjKz6Q4zDR3XKDc497wCNcBGAsYHQ/s1600/car3_gray.png',
+                 alt: '車のイラスト', class: "w-100 h-auto"%>
+              <% end %>
             </div>
             <div class="col-md-8">
               <div class="card-body">
                 <h5 class="mb-0">
-                  <h5 class="mt-0"><%= link_to article['title'], article_path(url_to_hash(article["url"])) %></h5>
+                  <%= link_to article['title'], article_path(url_to_hash(article['url'])) %>
                 </h5>
                 <p class="mb-1 text-muted">
                    <%= Time.parse(article['publishedAt']).strftime('%Y年%m月%d日') %>
@@ -83,9 +88,14 @@
     <% top_article_count += 1 %>
     <div class="media mb-3">
       <span class="badge badge-primary mr-2"><%= top_article_count %></span>
-      <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
+      <% if article.urlToImage.present? %>
+        <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
+      <% else %>
+        <%= image_tag 'https://1.bp.blogspot.com/-KdH7RagOZ2I/XZR9MV_KcMI/AAAAAAABVP4/EDGln4k4HSAI00vjKz6Q4zDR3XKDc497wCNcBGAsYHQ/s1600/car3_gray.png',
+         alt: '車のイラスト', class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;" %>
+      <% end %>
       <div class="media-body">
-        <h5 class="mt-0"><%= link_to article['title'], article_path(url_to_hash(article["url"])) %></h5>
+        <h5 class="mt-0"><%= link_to article.title, article_path(article) %></h5>
       </div>
     </div>
   <% end %>
@@ -96,9 +106,14 @@
     <% top_commented_article_count += 1 %>
     <div class="media mb-3">
       <span class="badge badge-primary mr-2"><%= top_commented_article_count %></span>
-      <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
+      <% if article.urlToImage.present? %>
+        <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
+      <% else %>
+        <%= image_tag 'https://1.bp.blogspot.com/-KdH7RagOZ2I/XZR9MV_KcMI/AAAAAAABVP4/EDGln4k4HSAI00vjKz6Q4zDR3XKDc497wCNcBGAsYHQ/s1600/car3_gray.png',
+         alt: '車のイラスト', class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;" %>
+      <% end %>
       <div class="media-body">
-        <h5 class="mt-0"><%= link_to article['title'], article_path(url_to_hash(article["url"])) %></h5>
+        <h5 class="mt-0"><%= link_to article.title, article_path(article) %></h5>
         <small class="text-muted"><%= pluralize(article.comments.count, 'コメント') %></small>
       </div>
     </div>
@@ -110,9 +125,14 @@
     <% top_bookmarked_article_count += 1 %>
     <div class="media mb-3">
       <span class="badge badge-primary mr-2"><%= top_bookmarked_article_count %></span>
-      <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
+      <% if article.urlToImage.present? %>
+        <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
+      <% else %>
+        <%= image_tag 'https://1.bp.blogspot.com/-KdH7RagOZ2I/XZR9MV_KcMI/AAAAAAABVP4/EDGln4k4HSAI00vjKz6Q4zDR3XKDc497wCNcBGAsYHQ/s1600/car3_gray.png',
+         alt: '車のイラスト', class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;" %>
+      <% end %>
       <div class="media-body">
-        <h5 class="mt-0"><%= link_to article['title'], article_path(url_to_hash(article["url"])) %></h5>
+        <h5 class="mt-0"><%= link_to article.title, article_path(article) %></h5>
       </div>
     </div>
   <% end %>
@@ -192,12 +212,17 @@
         <% @articles.each do |article| %>
           <div class="card flex-md-row mb-3">
             <div class="col-md-4">
-              <img src="<%= article['urlToImage'] %>" alt="イラスト挿入" class="w-100 h-auto">
+              <% if article['urlToImage'].present? %>
+                <img src="<%= article['urlToImage'] %>" alt="Article image" class="w-100 h-auto">
+              <% else %>
+                <%= image_tag 'https://1.bp.blogspot.com/-KdH7RagOZ2I/XZR9MV_KcMI/AAAAAAABVP4/EDGln4k4HSAI00vjKz6Q4zDR3XKDc497wCNcBGAsYHQ/s1600/car3_gray.png',
+                 alt: '車のイラスト', class: "w-100 h-auto"%>
+              <% end %>
             </div>
             <div class="col-md-8">
               <div class="card-body">
                 <h5 class="mb-0">
-                  <h5 class="mt-0"><%= link_to article['title'], article_path(url_to_hash(article["url"])) %></h5>
+                  <%= link_to article['title'], article_path(url_to_hash(article['url'])) %>
                 </h5>
                 <p class="mb-1 text-muted">
                    <%= Time.parse(article['publishedAt']).strftime('%Y年%m月%d日') %>
@@ -208,16 +233,21 @@
         <% end %>
       </div>
 
-       <div class="col-lg-4">
+      <div class="col-lg-4">
   <h5 class="mb-3">アクセスランキング</h5>
   <% top_article_count = 0 %>
   <% @top_articles.each do |article| %>
     <% top_article_count += 1 %>
     <div class="media mb-3">
       <span class="badge badge-primary mr-2"><%= top_article_count %></span>
-      <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
+      <% if article.urlToImage.present? %>
+        <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
+      <% else %>
+        <%= image_tag 'https://1.bp.blogspot.com/-KdH7RagOZ2I/XZR9MV_KcMI/AAAAAAABVP4/EDGln4k4HSAI00vjKz6Q4zDR3XKDc497wCNcBGAsYHQ/s1600/car3_gray.png',
+         alt: '車のイラスト', class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;" %>
+      <% end %>
       <div class="media-body">
-        <h5 class="mt-0"><%= link_to article['title'], article_path(url_to_hash(article["url"])) %></h5>
+        <h5 class="mt-0"><%= link_to article.title, article_path(article) %></h5>
       </div>
     </div>
   <% end %>
@@ -228,9 +258,14 @@
     <% top_commented_article_count += 1 %>
     <div class="media mb-3">
       <span class="badge badge-primary mr-2"><%= top_commented_article_count %></span>
-      <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
+      <% if article.urlToImage.present? %>
+        <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
+      <% else %>
+        <%= image_tag 'https://1.bp.blogspot.com/-KdH7RagOZ2I/XZR9MV_KcMI/AAAAAAABVP4/EDGln4k4HSAI00vjKz6Q4zDR3XKDc497wCNcBGAsYHQ/s1600/car3_gray.png',
+         alt: '車のイラスト', class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;" %>
+      <% end %>
       <div class="media-body">
-        <h5 class="mt-0"><%= link_to article['title'], article_path(url_to_hash(article["url"])) %></h5>
+        <h5 class="mt-0"><%= link_to article.title, article_path(article) %></h5>
         <small class="text-muted"><%= pluralize(article.comments.count, 'コメント') %></small>
       </div>
     </div>
@@ -242,9 +277,14 @@
     <% top_bookmarked_article_count += 1 %>
     <div class="media mb-3">
       <span class="badge badge-primary mr-2"><%= top_bookmarked_article_count %></span>
-      <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
+      <% if article.urlToImage.present? %>
+        <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
+      <% else %>
+        <%= image_tag 'https://1.bp.blogspot.com/-KdH7RagOZ2I/XZR9MV_KcMI/AAAAAAABVP4/EDGln4k4HSAI00vjKz6Q4zDR3XKDc497wCNcBGAsYHQ/s1600/car3_gray.png',
+         alt: '車のイラスト', class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;" %>
+      <% end %>
       <div class="media-body">
-        <h5 class="mt-0"><%= link_to article['title'], article_path(url_to_hash(article["url"])) %></h5>
+        <h5 class="mt-0"><%= link_to article.title, article_path(article) %></h5>
       </div>
     </div>
   <% end %>
