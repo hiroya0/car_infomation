@@ -25,18 +25,20 @@
   <div class="container">
     <div class="row">
       <% @articles.each do |article| %>
-        <div class="col-md-4">
+        <div class="col-md-4 d-flex align-items-stretch">
           <div class="card mb-4 shadow-sm">
-            <% if article["urlToImage"].present? %> 
-                <%= image_tag article["urlToImage"], :size =>'240x160' %>
-            <% else %>
-                <p>イラスト屋の画像を添付</p>
-            <% end %>
-            <div class="card-body">
-              <p class="card-text">
+            <div class="card-img-top">
+              <% if article["urlToImage"].present? %> 
+                  <%= image_tag article["urlToImage"], class: 'img-fluid', style: 'max-height: 160px;' %>
+              <% else %>
+                  <%= image_tag '/images/car3_gray (1).png', alt: '車のイラスト', class: 'img-fluid', style: 'max-height: 160px;' %>
+              <% end %>
+            </div>
+            <div class="card-body" style="flex-grow: 1;">
+              <p class="card-text" style="height: 100px; overflow-y: auto;">
                 <%= article["title"] %>
               </p>
-                <%= link_to "詳細を見る", article_path(url_to_hash(article["url"])) %>
+              <%= link_to "詳細を見る", article_path(url_to_hash(article["url"])) %>
             </div>
           </div>
         </div>
@@ -44,6 +46,21 @@
     </div>
   </div>
 </div>
+
+<style>
+  .card-img-top{
+    height: 160px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-img-top img {
+    width: 100%; 
+  }
+</style>
+
 <footer class="p-3  bg-dark text-white">
     <div class="container">
         <p class = "text-right">
