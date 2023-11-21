@@ -30,11 +30,13 @@
             <% if article["urlToImage"].present? %> 
                 <%= image_tag article["urlToImage"], class: 'img-fluid' %>
             <% else %>
-                <%= image_tag '/images/car3_gray (1).png', alt: '車のイラスト', class: 'img-fluid' %>
+                <%= image_tag '/images/car3_gray.png', alt: '車のイラスト', class: 'img-fluid' %>
             <% end %>
             <div class="card-body d-flex flex-column">
               <h5 class="card-title"><%= article["title"] %></h5>
-              
+              <p class="mb-1 text-muted">
+                <%= Time.parse(article['publishedAt']).strftime('%Y年%m月%d日') %>
+              </p>
               <%= link_to "詳細を見る", article_path(url_to_hash(article["url"])) %>
             </div>
           </div>
@@ -43,6 +45,7 @@
     </div>
   </div>
 </div>
+
 
 
 <style>

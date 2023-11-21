@@ -6,18 +6,20 @@ class ArticlesController < ApplicationController
   before_action :fetch_articles, only: %i[index show]
 
   def index
+
     return if params[:q_title_or_content_cont].blank?
 
     keyword = params[:q_title_or_content_cont]
     @articles = @articles.select do |article|
       article['title'].include?(keyword) || article['content'].include?(keyword)
     end
+    
   end
 
   def show
     @article = article_function
     return unless @article
-
+    binding.pry
     @article.increment_view_count
     @comment = @article.comments.build
   end
@@ -38,6 +40,7 @@ class ArticlesController < ApplicationController
         hashed_url: hashed_url,
         title: article['title'],
         content: article['content'],
+        description: article['description'],
         urlToImage: article['urlToImage'],
         url: article['url']
       )

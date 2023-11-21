@@ -1,25 +1,33 @@
 <div class="container mt-4">
-    <div class="card">  
-        <h1><%= @article.title %></h1>
-        <% if @article.urlToImage.present? %>
-          <img src="<%= @article.urlToImage %>" alt="Article image" />
-        <% end %>
-        <p><%= @article.content %></p>
-        <a href="<%= @article.url %>">Read more</a>
-        <%= link_to "記事一覧に戻る", articles_index_path %>
-        <%= button_to "Bookmark", bookmarks_path(article_hashed_url: @article.hashed_url, title: @article.title, content: @article.content, urlToImage: @article.urlToImage, url: @article.url), method: :post %>
-        
-        <div class="mt-4">
-            <h3>コメントを追加</h3>
-            <%= form_with(model: [ @article, Comment.new ], local: true) do |form| %>
-                <div class="field">
-                    <%= form.label :content, "コメント" %>
-                    <%= form.text_area :content %>
-                </div>
-                <div class="actions">
-                    <%= form.submit "コメントを投稿" %>
-                </div>
-            <% end %>
+  <div class="card">
+    <div class="row no-gutters">
+      <% if @article.urlToImage.present? %>
+        <div class="col-md-4">
+          <img src="<%= @article.urlToImage %>" alt="Article image" class="img-fluid" />
         </div>
+      <% end %>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h1 class="card-title"><%= @article.title %></h1>
+          <p class="card-text"><%= @article.content %></p>
+          <p class="card-text"><%= @article.description %></p>
+          <a href="<%= @article.url %>" class="btn btn-primary">Read more</a>
+          <%= link_to "記事一覧に戻る", articles_index_path, class: "btn btn-secondary" %>
+          <%= button_to "Bookmark", bookmarks_path(article_hashed_url: @article.hashed_url, title: @article.title, content: @article.content, urlToImage: @article.urlToImage, url: @article.url), method: :post, class: "btn btn-info" %>
+        </div>
+      </div>
     </div>
+    <div class="card-footer">
+      <h3>コメントを追加</h3>
+      <%= form_with(model: [ @article, Comment.new ], local: true) do |form| %>
+        <div class="form-group">
+          <%= form.label :content, "コメント" %>
+          <%= form.text_area :content, class: "form-control" %>
+        </div>
+        <div class="actions">
+          <%= form.submit "コメントを投稿", class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
