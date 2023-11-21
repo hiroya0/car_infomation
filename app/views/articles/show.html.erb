@@ -11,7 +11,7 @@
           <h1 class="card-title"><%= @article.title %></h1>
           <p class="card-text"><%= @article.content %></p>
           <p class="card-text"><%= @article.description %></p>
-          <a href="<%= @article.url %>" class="btn btn-primary">Read more</a>
+          <a href="<%= @article.url %>" class="btn btn-primary">元の記事を読む</a>
           <%= link_to "記事一覧に戻る", articles_index_path, class: "btn btn-secondary" %>
           <%= button_to "Bookmark", bookmarks_path(article_hashed_url: @article.hashed_url, title: @article.title,
            content: @article.content, urlToImage: @article.urlToImage, url: @article.url, description: @article.description), method: :post, class: "btn btn-info" %>
@@ -29,5 +29,20 @@
           <%= form.submit "コメントを投稿", class: "btn btn-success" %>
         </div>
       <% end %>
+    <div class="mt-4">
+  <h3>コメント一覧</h3>
+  <% @article.comments.each do |comment| %>
+    <div class="media mb-3">
+      <div class="media-body">
+        <% if comment.user %>
+          <h5 class="mt-0"><%= comment.user.username %>さん</h5>
+        <% else %>
+        <% end %>
+        <p><%= comment.content %></p>
+        <small class="text-muted"><%= comment.created_at %></small>
+      </div>
+    </div>
+  <% end %>
+</div>
   </div>
 </div>
