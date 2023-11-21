@@ -19,7 +19,6 @@ class ArticlesController < ApplicationController
   def show
     @article = article_function
     return unless @article
-    binding.pry
     @article.increment_view_count
     @comment = @article.comments.build
   end

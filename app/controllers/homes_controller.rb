@@ -36,7 +36,8 @@ class HomesController < ApplicationController
         title: article['title'],
         content: article['content'],
         urlToImage: article['urlToImage'],
-        url: article['url']
+        url: article['url'],
+        description: article['description']
       )
     else
       flash[:alert] = t('article_not_found')
