@@ -26,18 +26,15 @@
     <div class="row">
       <% @articles.each do |article| %>
         <div class="col-md-4 d-flex align-items-stretch">
-          <div class="card mb-4 shadow-sm">
-            <div class="card-img-top">
-              <% if article["urlToImage"].present? %> 
-                  <%= image_tag article["urlToImage"], class: 'img-fluid', style: 'max-height: 160px;' %>
-              <% else %>
-                  <%= image_tag '/images/car3_gray (1).png', alt: '車のイラスト', class: 'img-fluid', style: 'max-height: 160px;' %>
-              <% end %>
-            </div>
-            <div class="card-body" style="flex-grow: 1;">
-              <p class="card-text" style="height: 100px; overflow-y: auto;">
-                <%= article["title"] %>
-              </p>
+          <div class="card mb-4 shadow-sm d-flex flex-column">
+            <% if article["urlToImage"].present? %> 
+                <%= image_tag article["urlToImage"], class: 'img-fluid' %>
+            <% else %>
+                <%= image_tag '/images/car3_gray (1).png', alt: '車のイラスト', class: 'img-fluid' %>
+            <% end %>
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title"><%= article["title"] %></h5>
+              
               <%= link_to "詳細を見る", article_path(url_to_hash(article["url"])) %>
             </div>
           </div>
@@ -46,6 +43,7 @@
     </div>
   </div>
 </div>
+
 
 <style>
   .card-img-top{
