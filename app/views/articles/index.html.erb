@@ -1,11 +1,25 @@
-<h1>Car News</h1>
-<%= link_to "トップページに戻る", homes_index_path %>
-
-<%= form_tag articles_path, method: :get do %>
-  <%= label_tag :q_title_or_content_cont, "検索:" %>
-  <%= text_field_tag :q_title_or_content_cont %>
-  <%= submit_tag "検索" %>
-<% end %>
+<header class="header-large bg-dark py-3">
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+      <div class="row w-100">        
+        <div class="col-12 col-lg-8 mb-3">
+          <%= form_tag articles_path, method: :get, class: "d-flex" do %>
+            <%= text_field_tag :q_title_or_content_cont, nil, class: "form-control mr-2" %>
+            <%= submit_tag "検索", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+        <div class="col-lg-4 d-none d-lg-flex justify-content-end">
+          <span class="text-white"><%= current_user.username %></span>
+        </div>
+      </div>
+      <div class="row w-100">
+        <div class="col-12 col-lg-8 d-flex justify-content-start">
+          <%= link_to "トップページに戻る", homes_index_path, class: "text-white" %>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
 
 <div class="album py-5 bg-light">
   <div class="container">
@@ -30,3 +44,10 @@
     </div>
   </div>
 </div>
+<footer class="p-3  bg-dark text-white">
+    <div class="container">
+        <p class = "text-right">
+          <a href="#" class="text-white">ページトップへ</a>
+        </p>
+    </div>
+</footer>
