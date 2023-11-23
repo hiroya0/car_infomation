@@ -8,3 +8,10 @@ ja:
     delete_success: 'コメントを削除しました'
   articles:
     article_not_found: '記事が見つかりませんでした'
+  activerecord:
+    errors:
+      models:
+        comment:
+          attributes:
+            content:
+              blank: '文字を入力してください'
