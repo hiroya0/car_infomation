@@ -6,7 +6,6 @@ class ArticlesController < ApplicationController
   before_action :fetch_articles, only: %i[index show]
 
   def index
-
     return if params[:q_title_or_content_cont].blank?
 
     keyword = params[:q_title_or_content_cont]
@@ -20,7 +19,6 @@ class ArticlesController < ApplicationController
     @article = article_function
     return unless @article
     @article.increment_view_count
-    @comment = @article.comments.build
   end
 
   private

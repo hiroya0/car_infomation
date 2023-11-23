@@ -1,3 +1,13 @@
+<% if flash[:alert].present? %>
+  <div class="alert alert-danger">
+    <%= flash[:alert] %>
+  </div>
+<% elsif flash[:success].present? %>
+  <div class="alert alert-success">
+    <%= flash[:success] %>
+  </div>
+<% end %>
+
 <div class="container mt-4">
   <div class="card">
     <div class="row no-gutters">
@@ -30,19 +40,18 @@
         </div>
       <% end %>
     <div class="mt-4">
-  <h3>コメント一覧</h3>
-  <% @article.comments.each do |comment| %>
-    <div class="media mb-3">
-      <div class="media-body">
-        <% if comment.user %>
-          <h5 class="mt-0"><%= comment.user.username %>さん</h5>
-        <% else %>
-        <% end %>
-        <p><%= comment.content %></p>
-        <small class="text-muted"><%= comment.created_at %></small>
-      </div>
+      <h3>コメント一覧</h3>
+      <% @article.comments.each do |comment| %>
+        <div class="media mb-3">
+          <div class="media-body">
+            <% if comment.user %>
+              <h5 class="mt-0"><%= comment.user.username %>さん</h5>
+            <% end %>
+            <p><%= comment.content %></p>
+            <small class="text-muted"><%= comment.created_at %></small>
+          </div>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-</div>
   </div>
 </div>

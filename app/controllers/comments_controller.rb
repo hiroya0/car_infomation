@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
+  include ApplicationHelper
+
   def index
     @comments = current_user.comments.includes(:article)
   end
@@ -9,9 +11,13 @@ class CommentsController < ApplicationController
     @article = Article.find(params[:article_id])
     @comment = @article.comments.build(comment_params)
     @comment.user = current_user
-    @comment.save
-    flash[:notice] = t('comments.add_success')
-    redirect_to articles_path
+
+    if @comment.save
+      flash[:success] = t('comments.add_success')
+    else
+      flash[:alert] = @comment.errors.full_messages.to_sentence
+    end
+    redirect_to article_path(url_to_hash(@article.url)) 
   end
 
   def destroy
