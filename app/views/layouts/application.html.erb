@@ -18,12 +18,13 @@
   </head>
 
   <body>
-  <% flash.each do |key, value| %>
-  <% if value.present? %>
-    <div class="alert alert-<%= bootstrap_class_for_flash(key) %>">
-      <%= value %>
-    </div>
+  <% flash.each do |key, message| %>
+  <% if key == 'error' %>
+    <% message = message.gsub(/^[^ ]+ /, '') %>
   <% end %>
+  <div class="alert alert-<%= bootstrap_class_for_flash(key) %>">
+    <%= message %>
+  </div>
 <% end %>
 
     <%= yield %>
