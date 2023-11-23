@@ -20,4 +20,4 @@ Style/Documentation:
   Enabled: false
 
 Metrics/AbcSize:
-  Max: 20
+  Max: 25

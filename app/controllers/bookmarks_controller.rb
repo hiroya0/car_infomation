@@ -11,7 +11,7 @@ class BookmarksController < ApplicationController
   def create
     @article = find_or_initialize_article_from_params
     save_article_and_create_bookmark
-    redirect_to articles_path
+    redirect_to article_path(url_to_hash(@article.url))
   end
 
   def destroy

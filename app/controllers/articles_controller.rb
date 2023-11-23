@@ -19,7 +19,6 @@ class ArticlesController < ApplicationController
     return unless @article
 
     @article.increment_view_count
-    @comment = @article.comments.build
   end
 
   private
@@ -38,12 +37,13 @@ class ArticlesController < ApplicationController
         hashed_url: hashed_url,
         title: article['title'],
         content: article['content'],
+        description: article['description'],
         urlToImage: article['urlToImage'],
         url: article['url']
       )
     else
-      flash[:alert] = t('article_not_found')
-      redirect_to articles_path and return
+      flash[:error] = t('article_not_found')
+      redirect_to article_path(url_to_hash(article['url']))
     end
   end
 end
