@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
     if @comment.save
       flash[:success] = t('comments.add_success')
     else
-      flash[:alert] = @comment.errors.full_messages.to_sentence
+      flash[:error] = @comment.errors.full_messages.to_sentence
     end
     redirect_to article_path(url_to_hash(@article.url)) 
   end
@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
   def destroy
     comment = current_user.comments.find(params[:id])
     comment&.destroy
-    flash[:notice] = t('comments.delete_success')
+    flash[:error] = t('comments.delete_success')
     redirect_to comments_path
   end
 

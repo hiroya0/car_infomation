@@ -42,8 +42,8 @@ class ArticlesController < ApplicationController
         url: article['url']
       )
     else
-      flash[:alert] = t('article_not_found')
-      redirect_to articles_path and return
+    flash[:error] = t('article_not_found')
+    redirect_to article_path(url_to_hash(article["url"]))
     end
   end
 end
