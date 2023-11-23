@@ -12,12 +12,12 @@ class ArticlesController < ApplicationController
     @articles = @articles.select do |article|
       article['title'].include?(keyword) || article['content'].include?(keyword)
     end
-    
   end
 
   def show
     @article = article_function
     return unless @article
+
     @article.increment_view_count
   end
 
@@ -42,8 +42,8 @@ class ArticlesController < ApplicationController
         url: article['url']
       )
     else
-    flash[:error] = t('article_not_found')
-    redirect_to article_path(url_to_hash(article["url"]))
+      flash[:error] = t('article_not_found')
+      redirect_to article_path(url_to_hash(article['url']))
     end
   end
 end

@@ -1,3 +1,4 @@
+<% if user_signed_in? %>
 <header class="header-large bg-dark py-3">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
@@ -69,3 +70,74 @@
         </p>
     </div>
 </footer>
+
+<% else %>
+
+<header class="header-large bg-dark py-3">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <%= form_tag articles_path, method: :get, class: "form-inline my-2 my-lg-0 mr-auto" do %>
+        <%= text_field_tag :q_title_or_content_cont, nil, class: "form-control mr-sm-2" %>
+        <%= submit_tag "検索", class: "btn btn-primary my-2 my-sm-0" %>
+      <% end %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+          <li class="nav-item my-2"><%= link_to 'トップページに戻る', homes_index_path, class: "text-white mx-2" %></li>
+          <li class="nav-item my-2"><span class="mx-2 text-white">ゲストさん</span></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <% @articles.each do |article| %>
+        <div class="col-md-4 d-flex align-items-stretch">
+          <div class="card mb-4 shadow-sm d-flex flex-column">
+            <% if article["urlToImage"].present? %> 
+                <%= image_tag article["urlToImage"], class: 'img-fluid' %>
+            <% else %>
+                <%= image_tag '/images/car3_gray.png', alt: '車のイラスト', class: 'img-fluid' %>
+            <% end %>
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title"><%= article["title"] %></h5>
+              <p class="mb-1 text-muted">
+                <%= Time.parse(article['publishedAt']).strftime('%Y年%m月%d日') %>
+              </p>
+              <%= link_to "詳細を見る", article_path(url_to_hash(article["url"])) %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<style>
+  .card-img-top{
+    height: 160px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-img-top img {
+    width: 100%; 
+  }
+</style>
+
+<footer class="p-3  bg-dark text-white">
+    <div class="container">
+        <p class = "text-right">
+          <a href="#" class="text-white">ページトップへ</a>
+        </p>
+    </div>
+</footer>
+<% end %>

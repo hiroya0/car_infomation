@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
     else
       flash[:error] = @comment.errors.full_messages.to_sentence
     end
-    redirect_to article_path(url_to_hash(@article.url)) 
+    redirect_to article_path(url_to_hash(@article.url))
   end
 
   def destroy
