@@ -37,7 +37,7 @@ class BookmarksController < ApplicationController
 
   def create_bookmark_or_set_flash
     if Bookmark.exists?(user: current_user, article: @article)
-      flash[:notice] = t('bookmarks.already_bookmarked')
+      flash[:error] = t('bookmarks.already_bookmarked')
     else
       Bookmark.create(user: current_user, article: @article)
       flash[:success] = t('bookmarks.bookmark_success')
