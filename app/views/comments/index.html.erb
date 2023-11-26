@@ -8,7 +8,7 @@
           <% if comment.article.urlToImage.present? %>
             <%= image_tag comment.article.urlToImage, class: "card-img-top", alt: "Card image cap" %>
           <% else %>
-            <p>イラスト屋の画像を表示</p>
+            <%= image_tag '/images/car3_gray.png', alt: '車のイラスト', class: 'img-fluid' %>
           <% end %>
           <p><%= comment.content %></p>
           <div class="d-flex justify-content-between align-items-center">

@@ -6,7 +6,11 @@
         <div class="col-md-4">
           <img src="<%= @article.urlToImage %>" alt="Article image" class="img-fluid" />
         </div>
-      <% end %>
+      <% else %>
+        <div class="col-md-4">
+          <%= image_tag '/images/car3_gray.png', alt: '車のイラスト', class: 'img-fluid' %>
+        </div>  
+      <% end %> 
       <div class="col-md-8">
         <div class="card-body">
           <h1 class="card-title"><%= @article.title %></h1>
@@ -56,7 +60,11 @@
         <div class="col-md-4">
           <img src="<%= @article.urlToImage %>" alt="Article image" class="img-fluid" />
         </div>
-      <% end %>
+      <% else %>
+        <div class="col-md-4">
+          <%= image_tag '/images/car3_gray.png', alt: '車のイラスト', class: 'img-fluid' %>
+        </div>  
+      <% end %> 
       <div class="col-md-8">
         <div class="card-body">
           <h1 class="card-title"><%= @article.title %></h1>
