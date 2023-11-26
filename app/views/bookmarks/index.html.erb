@@ -17,33 +17,31 @@
 </nav>
 </header>
 
-<div class="album py-5 bg-light">
-  <div class="container"> 
-    <div class="row">
-      <% @bookmarks.each do |bookmark| %>
-        <div class="card flex-md-row mb-4 shadow-sm">
-          <div class="col-md-4">
-            <% if bookmark.article.urlToImage.present? %>
-              <img src="<%= bookmark.article.urlToImage %>" alt="Article image" class="w-100 h-auto">
-            <% else %>
-              <%= image_tag '/images/car3_gray.png', alt: '車のイラスト', class: 'img-fluid' %>
-            <% end %>
-          </div>
-          <div class="col-md-8">
-            <div class="card-body d-flex flex-column justify-content-between">
-              <h5 class="mb-0">
-                <%= link_to bookmark.article.title, article_path(url_to_hash(bookmark.article.url)), class: "text-dark" %>
-              </h5>
-              <div class="d-flex justify-content-between align-items-center mt-2">
-                <%= button_to 'ブックマーク解除', bookmark_path(bookmark), method: :delete, data: { confirm: 'このブックマークを削除しますか？' }, class: "btn btn-outline-danger" %>
-                <small class="text-muted">ブックマークした日時: <%= bookmark.created_at.strftime('%Y年%m月%d日 %H:%M') %></small>
-              </div>
+<div class="container mt-4">
+  <% @bookmarks.each do |bookmark| %>
+    <div class="card mb-4">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <% if bookmark.article.urlToImage.present? %>
+            <img src="<%= bookmark.article.urlToImage %>" alt="Article image" class="img-fluid" />
+          <% else %>
+            <%= image_tag '/images/car3_gray.png', alt: '車のイラスト', class: 'img-fluid' %>
+          <% end %>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="mt-0">
+              <%= link_to bookmark.article.title, article_path(url_to_hash(bookmark.article.url)), class: "text-dark" %>
+            </h5>
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <%= button_to 'ブックマーク解除', bookmark_path(bookmark), method: :delete, data: { confirm: 'このブックマークを削除しますか？' }, class: "btn btn-outline-danger" %>
+              <small class="text-muted">ブックマークした日時: <%= bookmark.created_at.strftime('%Y年%m月%d日 %H:%M') %></small>
             </div>
           </div>
         </div>
-      <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>
 
 <footer class="p-3  bg-dark text-white">

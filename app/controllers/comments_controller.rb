@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   include ApplicationHelper
 
   def index
-    @comments = current_user.comments.includes(:article)
+    @group_comments = current_user.comments.includes(:article).group_by { |comment| comment.article }
   end
 
   def create
