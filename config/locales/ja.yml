@@ -15,3 +15,17 @@ ja:
           attributes:
             content:
               blank: '文字を入力してください'
+  devise:
+    sessions:
+      user:
+        signed_out: 'ログアウトしました。'
+        signed_in: 'ログインしました。'
+    registrations:
+      user:
+        updated: 'アカウント情報を更新しました。'
+        signed_up: 'アカウント登録が完了しました。'
+    failure:
+      user:
+        not_found_in_database: 'メールアドレスもしくはパスワードが不正です。'
+        invalid: 'メールアドレスもしくはパスワードが不正です。'
+        
