@@ -7,10 +7,9 @@ module ApplicationHelper
 
   def bootstrap_class_for_flash(flash_type)
     case flash_type
-    when 'success'
-      'success'
-    when 'error'
-      'danger'
+    when 'notice' then 'success'
+    when 'alert', 'error' then 'danger'
+    else flash_type
     end
   end
 end
