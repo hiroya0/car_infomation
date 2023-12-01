@@ -9,6 +9,11 @@ ja:
   articles:
     article_not_found: '記事が見つかりませんでした'
   activerecord:
+    models:
+      user: "ユーザー"
+    attributes:
+      user:
+        username: "名前"
     errors:
       models:
         comment:
@@ -17,31 +22,5 @@ ja:
               blank: '文字を入力してください'
         user:
           attributes:
-            email:
-              blank: 'メールアドレスを入力してください'
-              taken: 'このメールアドレスは既に使用されています'
-            password:
-              blank: 'パスワードを入力してください'
-              too_short: 'パスワードは%{count}文字以上である必要があります'
-            password_confirmation:
-              confirmation: 'パスワード確認が一致しません'
-      messages:
-        confirmation: 'が一致しません'
-        taken: 'は既に使用されています'
-        too_short: 'は%{count}文字以上である必要があります'
-        not_saved:
-          one: 'この%{resource}は保存できませんでした: 1件のエラーがあります'
-          other: 'この%{resource}は保存できませんでした: %{count}件のエラーがあります'
-  devise:
-    sessions:
-      user:
-        signed_out: 'ログアウトしました。'
-        signed_in: 'ログインしました。'
-    registrations:
-      user:
-        updated: 'アカウント情報を更新しました。'
-        signed_up: 'アカウント登録が完了しました。'
-    failure:
-      user:
-        not_found_in_database: 'メールアドレスもしくはパスワードが不正です。'
-        invalid: 'メールアドレスもしくはパスワードが不正です。'
+            username:
+              blank: 'を入力してください'
