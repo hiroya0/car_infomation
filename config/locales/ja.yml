@@ -14,13 +14,15 @@ ja:
     attributes:
       user:
         username: "名前"
+      comment:
+        content: "文字"
     errors:
       models:
-        comment:
-          attributes:
-            content:
-              blank: '文字を入力してください'
         user:
           attributes:
             username:
+              blank: 'を入力してください'
+        comment:
+          attributes:
+            content:
               blank: 'を入力してください'
