@@ -15,6 +15,23 @@ ja:
           attributes:
             content:
               blank: '文字を入力してください'
+        user:
+          attributes:
+            email:
+              blank: 'メールアドレスを入力してください'
+              taken: 'このメールアドレスは既に使用されています'
+            password:
+              blank: 'パスワードを入力してください'
+              too_short: 'パスワードは%{count}文字以上である必要があります'
+            password_confirmation:
+              confirmation: 'パスワード確認が一致しません'
+      messages:
+        confirmation: 'が一致しません'
+        taken: 'は既に使用されています'
+        too_short: 'は%{count}文字以上である必要があります'
+        not_saved:
+          one: 'この%{resource}は保存できませんでした: 1件のエラーがあります'
+          other: 'この%{resource}は保存できませんでした: %{count}件のエラーがあります'
   devise:
     sessions:
       user:
@@ -28,4 +45,3 @@ ja:
       user:
         not_found_in_database: 'メールアドレスもしくはパスワードが不正です。'
         invalid: 'メールアドレスもしくはパスワードが不正です。'
-        
