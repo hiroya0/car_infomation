@@ -3,7 +3,13 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-
+  def destroy
+    super do |resource|
+      if resource.destroyed?
+        flash[:error] = 'アカウントが削除されました。' 
+      end
+    end
+  end
   # GET /resource/sign_up
   # def new
   #   super
