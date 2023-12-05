@@ -6,4 +6,3 @@ function check(){
       return false;
     }
   }
-  
