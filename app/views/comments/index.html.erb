@@ -27,7 +27,7 @@
           </div>
         <% else %>
           <div class="col-md-4">
-            <%= image_tag '/images/car3_gray.png', alt: '車のイラスト', class: 'img-fluid' %>
+            <%= image_tag '/images/car3_gray (1).png', alt: '車のイラスト', class: 'img-fluid' %>
           </div>  
         <% end %>
         <div class="col-md-8">
@@ -45,7 +45,7 @@
                 <h5 class="mt-0"><%= comment.user.username %>さん</h5>
               <% end %>
               <p><%= comment.content %></p>
-              <%= button_to 'コメント削除', comment_path(comment), method: :delete, data: { confirm: 'このコメントを削除しますか？' }, class: "btn btn-outline-danger btn-sm" %>
+              <%= button_to 'コメント削除', comment_path(comment), class: "btn btn-outline-danger", method: :delete, data: { turbo: false }, form: { onSubmit: "return check()" } %>
               <small class="text-muted"><%= comment.created_at.strftime('%Y-%m-%d %H:%M:%S') %></small>
             </div>
           </div>

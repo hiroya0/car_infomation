@@ -10,4 +10,9 @@ ja:
       user:
         signed_up: "アカウント登録が完了しました。"
       signed_up: "アカウント登録が完了しました。"
-  
+      user:
+        updated: 'アカウント情報を更新しました。'
+      updated: 'アカウント情報を更新しました。'
+      user:
+        destroyed: 'アカウントを削除しました。'
+      destroyed: 'アカウントを削除しました。'
