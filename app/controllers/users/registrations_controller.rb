@@ -6,7 +6,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def destroy
     super do |resource|
       if resource.destroyed?
-        flash[:error] = 'アカウントが削除されました。' 
+        flash[:error] = 'アカウントを削除しました。' 
       end
     end
   end

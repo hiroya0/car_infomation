@@ -4,7 +4,7 @@ class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   def destroy
     super do
-      flash[:error] = 'ログ。'
+      flash[:error] = 'ログアウトしました'
     end
   end
   # GET /resource/sign_in

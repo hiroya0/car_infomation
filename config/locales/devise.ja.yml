@@ -3,9 +3,12 @@ ja:
     failure:
       invalid: メールアドレスまたはパスワードが正しくありません。
       not_found_in_database: "メールアドレスまたはパスワードが正しくありません。"
+      already_authenticated: "すでにログインしています"
+      user:
+        already_authenticated: "すでにログインしています"
     sessions:
       signed_in: ログインに成功しました。
-      signed_out: ログアウトしました。
+      signed_out: ''
     registrations:
       user:
         signed_up: "アカウント登録が完了しました。"
@@ -14,5 +17,5 @@ ja:
         updated: 'アカウント情報を更新しました。'
       updated: 'アカウント情報を更新しました。'
       user:
-        destroyed: 'アカウントを削除しました。'
-      destroyed: 'アカウントを削除しました。'
+        destroyed: ''
+      destroyed: ''
