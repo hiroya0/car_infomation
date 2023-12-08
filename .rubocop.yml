@@ -21,3 +21,8 @@ Style/Documentation:
 
 Metrics/AbcSize:
   Max: 25
+
+Rails/I18nLocaleTexts:
+  Exclude:
+    - 'app/controllers/users/registrations_controller.rb'
+    - 'app/controllers/users/sessions_controller.rb'

@@ -6,27 +6,27 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
     <%= javascript_importmap_tags %>
-
+    <%= javascript_include_tag 'confirmation' %>
+    <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
   </head>
 
   <body>
   <% flash.each do |key, message| %>
-  <% if key == 'error' %>
+  <% if key == 'notice' %>
     <% message = message.gsub(/^[^ ]+ /, '') %>
   <% end %>
   <div class="alert alert-<%= bootstrap_class_for_flash(key) %>">
     <%= message %>
   </div>
-<% end %>
-
-    <%= yield %>
+  <% end %>
+  <%= yield %>
   </body>
 </html>

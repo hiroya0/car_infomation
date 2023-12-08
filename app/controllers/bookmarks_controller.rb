@@ -17,7 +17,7 @@ class BookmarksController < ApplicationController
   def destroy
     bookmark = current_user.bookmarks.find(params[:id])
     bookmark&.destroy
-    flash[:notice] = t('bookmarks.delete_success')
+    flash[:error] = t('bookmarks.delete_success')
     redirect_to bookmarks_path
   end
 

@@ -9,9 +9,21 @@ ja:
   articles:
     article_not_found: '記事が見つかりませんでした'
   activerecord:
+    models:
+      user: "ユーザー"
+    attributes:
+      user:
+        username: "名前"
+      comment:
+        content: "文字"
     errors:
       models:
+        user:
+          attributes:
+            username:
+              blank: 'を入力してください'
         comment:
           attributes:
             content:
-              blank: '文字を入力してください'
+              blank: 'を入力してください'
+    
