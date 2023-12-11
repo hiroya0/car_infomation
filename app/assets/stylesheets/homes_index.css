@@ -1,0 +1,12 @@
+.jumbotron.custom-background {
+    background: url('/images/top.png') no-repeat center center;
+    background-size: cover;
+    position: relative;
+}
+
+.jumbotron.custom-background .container {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    border-radius: 5px;
+}
+
