@@ -22,14 +22,12 @@
 </header>
 
 <main role="main">
-
-  <section class="jumbotron text-center background-image">
+  <section class="jumbotron text-center custom-background">
     <div class="container">
-    <%= image_tag '/images/car3_gray (1).png', alt: '車のイラスト', class: "background-image"%>
       <h1 class="jumbotron-heading">車をもっと知ろう</h1>
       <p class="lead text-muted">当アプリは車の情報を素早く検索、みんなと共有できる車特化の情報検索アプリです</p>
       <p>
-        <%= link_to "もっとニュースを確認する",articles_index_path,class:"btn btn-primary my-2"%>
+        <%= link_to "もっとニュースを確認する", articles_index_path, class: "btn btn-primary my-2" %>
       </p>
     </div>
   </section>
@@ -44,7 +42,7 @@
               <% if article['urlToImage'].present? %>
                 <img src="<%= article['urlToImage'] %>" alt="Article image" class="w-100 h-auto">
               <% else %>
-                <%= image_tag '/images/car3_gray (1).png', alt: '車のイラスト',
+                <%= image_tag '/images/car3_gray.png', alt: '車のイラスト',
                  class: "w-100 h-auto"%>
               <% end %>
             </div>
@@ -72,7 +70,7 @@
       <% if article.urlToImage.present? %>
         <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
       <% else %>
-        <%= image_tag '/images/car3_gray (1).png', alt: '車のイラスト',
+        <%= image_tag '/images/car3_gray.png', alt: '車のイラスト',
          class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;" %>
       <% end %>
       <div class="media-body">
@@ -90,7 +88,7 @@
       <% if article.urlToImage.present? %>
         <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
       <% else %>
-        <%= image_tag '/images/car3_gray (1).png', alt: '車のイラスト',
+        <%= image_tag '/images/car3_gray.png', alt: '車のイラスト',
          class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;" %>
       <% end %>
       <div class="media-body">
@@ -109,7 +107,7 @@
       <% if article.urlToImage.present? %>
         <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
       <% else %>
-        <%= image_tag '/images/car3_gray (1).png', alt: '車のイラスト',
+        <%= image_tag '/images/car3_gray.png', alt: '車のイラスト',
          class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;" %>
       <% end %>
       <div class="media-body">
@@ -159,16 +157,16 @@
 </header>
 
 <main role="main">
-  <section class="jumbotron text-center">
+  <section class="jumbotron text-center custom-background">
     <div class="container">
       <h1 class="jumbotron-heading">車をもっと知ろう</h1>
-      <p class="lead text-muted">当アプリは車の情報を素早く検索、みんなと共有できる特化型の情報検索アプリです</p>
+      <p class="lead text-muted">当アプリは車の情報を素早く検索、みんなと共有できる車特化の情報検索アプリです</p>
       <p>
-        <%= link_to "もっとニュースを確認する",articles_index_path,class:"btn btn-primary my-2"%>
+        <%= link_to "もっとニュースを確認する", articles_index_path, class: "btn btn-primary my-2" %>
       </p>
     </div>
   </section>
-
+  
 <div class="album py-5 bg-light">
   <div class="container"> 
     <div class="row">
@@ -179,7 +177,7 @@
               <% if article['urlToImage'].present? %>
                 <img src="<%= article['urlToImage'] %>" alt="Article image" class="w-100 h-auto">
               <% else %>
-                <%= image_tag '/images/car3_gray (1).png', alt: '車のイラスト', class: "w-100 h-auto"%>
+                <%= image_tag '/images/car3_gray.png', alt: '車のイラスト', class: "w-100 h-auto"%>
               <% end %>
             </div>
             <div class="col-md-8">
@@ -206,7 +204,7 @@
       <% if article.urlToImage.present? %>
         <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
       <% else %>
-        <%= image_tag '/images/car3_gray (1).png', alt: '車のイラスト',
+        <%= image_tag '/images/car3_gray.png', alt: '車のイラスト',
          class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;" %>
       <% end %>
       <div class="media-body">
@@ -224,7 +222,7 @@
       <% if article.urlToImage.present? %>
         <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
       <% else %>
-        <%= image_tag '/images/car3_gray (1).png', alt: '車のイラスト',
+        <%= image_tag '/images/car3_gray.png', alt: '車のイラスト',
          class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;" %>
       <% end %>
       <div class="media-body">
@@ -243,7 +241,7 @@
       <% if article.urlToImage.present? %>
         <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
       <% else %>
-        <%= image_tag '/images/car3_gray (1).png', alt: '車のイラスト',
+        <%= image_tag '/images/car3_gray.png', alt: '車のイラスト',
          class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;" %>
       <% end %>
       <div class="media-body">
