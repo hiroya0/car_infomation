@@ -8,10 +8,18 @@ RSpec.describe '記事一覧' do
   before do
     allow(NewsApiService).to receive(:fetch_car_news).and_return({
                                                                    'articles' => [
-                                                                     { 'title' => '記事タイトル', 'content' => '記事のコンテンツ',
-                                                                       'url' => 'https://example.com/article1' },
-                                                                     { 'title' => '自動車', 'content' => '検索結果に車を含むコンテンツ',
-                                                                       'url' => 'https://example.com/article2' }
+                                                                     {
+                                                                       'title' => '記事タイトル',
+                                                                       'content' => '記事のコンテンツ',
+                                                                       'publishedAt' => '2023-01-01T00:00:00Z',
+                                                                       'url' => 'https://example.com/article1'
+                                                                     },
+                                                                     {
+                                                                       'title' => '自動車',
+                                                                       'content' => '検索結果に車を含むコンテンツ',
+                                                                       'publishedAt' => '2023-01-02T00:00:00Z',
+                                                                       'url' => 'https://example.com/article2'
+                                                                     }
                                                                    ]
                                                                  })
   end
