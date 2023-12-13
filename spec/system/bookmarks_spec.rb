@@ -37,7 +37,7 @@ RSpec.describe 'Bookmarks' do
     end
 
     it 'ユーザーが新しいブックマークを作成できる' do
-      expect(page).to have_current_path(articles_path)
+      expect(page).to have_current_path(article_path(hashed_url))
     end
   end
 
@@ -47,8 +47,9 @@ RSpec.describe 'Bookmarks' do
       visit bookmarks_path
     end
 
-    it 'ユーザーがブックマークを削除できる', :js do
-      find('.btn.btn-sm.btn-outline-danger').click
+    it 'ユーザーがブックマークを削除できる' do
+      find('.btn.btn-outline-danger').click
+      page.driver.browser.switch_to.alert.accept
       expect(page).not_to have_content article.title
     end
   end

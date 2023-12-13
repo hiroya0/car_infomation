@@ -3,6 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe 'コメント' do
+  include ApplicationHelper
+
   let(:user) { create(:user) }
   let(:article) { create(:article) }
   let!(:comment) { create(:comment, user: user, article: article) }
@@ -18,9 +20,9 @@ RSpec.describe 'コメント' do
       end.to change(Comment, :count).by(1)
     end
 
-    it '記事一覧ページにリダイレクトする' do
+    it '記事詳細ページにリダイレクトする' do
       post article_comments_path(article), params: { comment: comment_params }
-      expect(response).to redirect_to articles_path
+      expect(response).to redirect_to article_path(url_to_hash(article.url))
     end
   end
 

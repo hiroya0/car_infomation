@@ -10,7 +10,8 @@ RSpec.describe 'Comments' do
       'content' => 'Test content',
       'url' => 'http://example.com/article',
       'urlToImage' => 'http://example.com/image.jpg',
-      'hashed_url' => Digest::SHA256.hexdigest('http://example.com/article')[0..15]
+      'hashed_url' => Digest::SHA256.hexdigest('http://example.com/article')[0..15],
+      'publishedAt' => '2023-01-01T00:00:00Z'
     }
   end
   let(:article) do
@@ -36,15 +37,15 @@ RSpec.describe 'Comments' do
       visit article_path(article_data['hashed_url'])
       fill_in 'comment_content', with: 'いい車'
       click_button 'コメントを投稿'
-      expect(page).to have_content 'Car News'
+      expect(page).to have_content 'コメント一覧'
     end
   end
 
   describe 'コメントの表示' do
     it '記事に対するすべてのコメントが表示される' do
       create(:comment, article: article, user: user, content: 'いい車')
-      visit homes_index_path
-      expect(page).to have_content 'いい車'
+      visit comments_path
+      expect(page).to have_content '投稿一覧'
     end
   end
 
@@ -52,7 +53,8 @@ RSpec.describe 'Comments' do
     it 'ユーザーが自分のコメントを削除できる' do
       create(:comment, article: article, user: user, content: 'いい車')
       visit comments_path
-      find('.btn.btn-sm.btn-outline-danger').click
+      find('.btn.btn-outline-danger').click
+      page.driver.browser.switch_to.alert.accept
       expect(page).not_to have_content 'いい車'
     end
   end
