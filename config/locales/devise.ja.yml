@@ -7,7 +7,7 @@ ja:
       user:
         already_authenticated: "すでにログインしています"
     sessions:
-      signed_in: 'ログインに成功しました'
+      signed_in: 'ログインしました'
       signed_out: ''
     registrations:
       user:
