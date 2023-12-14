@@ -1,20 +1,20 @@
 <header class="header-large bg-dark py-3">
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <h2 class="navbar-brand" href="#">投稿一覧</h2>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav ml-auto">
-  <li class="nav-item my-2"><%= link_to 'ブックマーク一覧', bookmarks_path, class: "nav-link text-white mx-2" %></li>
-  <li class="nav-item my-2"><%= link_to '記事一覧に戻る', articles_path, class: "nav-link text-white mx-2" %></li>
-  <li class="nav-item my-2"><%= link_to 'トップページに戻る', root_path, class: "nav-link text-white mx-2" %></li>
-  <li class="nav-item my-2"><span class="nav-link text-white mx-2" style="cursor: default;"><%= current_user.username %></span></li>
-</ul>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <h2 class="navbar-brand" href="#">投稿一覧</h2>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item my-2"><%= link_to 'ブックマーク一覧', bookmarks_path, class: "nav-link text-white mx-2" %></li>
+          <li class="nav-item my-2"><%= link_to '記事一覧に戻る', articles_path, class: "nav-link text-white mx-2" %></li>
+          <li class="nav-item my-2"><%= link_to 'トップページに戻る', root_path, class: "nav-link text-white mx-2" %></li>
+          <li class="nav-item my-2 text-white"><%= link_to current_user.username, edit_user_registration_path, class: "nav-link text-white mx-2" %></li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 </header>
 
 <div class="container mt-4">
@@ -23,7 +23,7 @@
       <div class="row no-gutters">
         <% if article.urlToImage.present? %>
           <div class="col-md-4">
-            <img src="<%= article.urlToImage %>" alt="Article image" class="img-fluid" />
+            <img src="<%= article.urlToImage %>" alt="ArticleImage" class="img-fluid" />
           </div>
         <% else %>
           <div class="col-md-4">
@@ -32,8 +32,9 @@
         <% end %>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="mt-0"><%= link_to article.title, article_path(url_to_hash(article.url)),
-             class: "text-dark" %></h5>
+            <h5 class="mt-0">
+              <%= link_to article.title, article_path(url_to_hash(article.url)), class: "text-dark" %>
+            </h5>
           </div>
         </div>
       </div>
@@ -55,10 +56,10 @@
   <% end %>
 </div>
 
-<footer class="p-3  bg-dark text-white">
-    <div class="container">
-        <p class = "text-right">
-          <a href="#" class="text-white">ページトップへ</a>
-        </p>
-    </div>
+<footer class="p-3 bg-dark text-white">
+  <div class="container">
+    <p class="text-right">
+      <a href="#" class="text-white">ページトップへ</a>
+    </p>
+  </div>
 </footer>

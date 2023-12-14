@@ -40,8 +40,8 @@ class HomesController < ApplicationController
         description: article['description']
       )
     else
-      flash[:error] = t('article_not_found')
-      redirect_to articles_path and return
+      flash[:error] = t('articles.article_not_found')
+      redirect_to root_path
     end
   end
 end
