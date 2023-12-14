@@ -40,7 +40,7 @@
               <div class="card flex-md-row mb-3">
                 <div class="col-md-4">
                   <% if article['urlToImage'].present? %>
-                    <img src="<%= article['urlToImage'] %>" alt="Article image" class="w-100 h-auto">
+                    <img src="<%= article['urlToImage'] %>" alt="ArticleImage" class="w-100 h-auto">
                   <% else %>
                     <%= image_tag '/images/car3_gray.png', alt: '車のイラスト', class: "w-100 h-auto"%>
                   <% end %>
@@ -67,7 +67,7 @@
               <div class="media mb-3">
                 <span class="badge badge-primary mr-2"><%= top_article_count %></span>
                 <% if article.urlToImage.present? %>
-                  <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
+                  <%= image_tag(article.urlToImage, alt: 'ArticleImage', class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
                 <% else %>
                   <%= image_tag '/images/car3_gray.png', alt: '車のイラスト', class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;" %>
                 <% end %>
@@ -84,7 +84,7 @@
               <div class="media mb-3">
                 <span class="badge badge-primary mr-2"><%= top_commented_article_count %></span>
                 <% if article.urlToImage.present? %>
-                  <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
+                  <%= image_tag(article.urlToImage, alt: 'ArticleImage', class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
                 <% else %>
                   <%= image_tag '/images/car3_gray.png', alt: '車のイラスト', class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;" %>
                 <% end %>
@@ -102,7 +102,7 @@
               <div class="media mb-3">
                 <span class="badge badge-primary mr-2"><%= top_bookmarked_article_count %></span>
                 <% if article.urlToImage.present? %>
-                  <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
+                  <%= image_tag(article.urlToImage, alt: 'ArticleImage', class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
                 <% else %>
                   <%= image_tag '/images/car3_gray.png', alt: '車のイラスト', class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;" %>
                 <% end %>
@@ -166,7 +166,7 @@
             <div class="card flex-md-row mb-3">
               <div class="col-md-4">
                 <% if article['urlToImage'].present? %>
-                  <img src="<%= article['urlToImage'] %>" alt="Article image" class="w-100 h-auto">
+                  <img src="<%= article['urlToImage'] %>" alt="ArticleImage" class="w-100 h-auto">
                 <% else %>
                   <%= image_tag '/images/car3_gray.png', alt: '車のイラスト', class: "w-100 h-auto"%>
                 <% end %>
@@ -193,7 +193,7 @@
             <div class="media mb-3">
               <span class="badge badge-primary mr-2"><%= top_article_count %></span>
               <% if article.urlToImage.present? %>
-                <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
+                <%= image_tag(article.urlToImage, alt: 'ArticleImage', class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
               <% else %>
                 <%= image_tag '/images/car3_gray.png', alt: '車のイラスト', class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;" %>
               <% end %>
@@ -210,7 +210,7 @@
             <div class="media mb-3">
               <span class="badge badge-primary mr-2"><%= top_commented_article_count %></span>
               <% if article.urlToImage.present? %>
-                <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
+                <%= image_tag(article.urlToImage, alt: 'ArticleImage', class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
               <% else %>
                 <%= image_tag '/images/car3_gray.png', alt: '車のイラスト', class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;" %>
               <% end %>
@@ -228,7 +228,7 @@
             <div class="media mb-3">
               <span class="badge badge-primary mr-2"><%= top_bookmarked_article_count %></span>
               <% if article.urlToImage.present? %>
-                <%= image_tag(article.urlToImage, class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
+                <%= image_tag(article.urlToImage, alt: 'ArticleImage', class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;") %>
               <% else %>
                 <%= image_tag '/images/car3_gray.png', alt: '車のイラスト', class: "mr-3", style: "width: 64px; height: 64px; object-fit: cover;" %>
               <% end %>
