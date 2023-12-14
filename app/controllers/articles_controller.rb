@@ -43,7 +43,7 @@ class ArticlesController < ApplicationController
       )
     else
       flash[:error] = t('article_not_found')
-      redirect_to article_path(url_to_hash(article['url']))
+      redirect_to article_path
     end
   end
 end
