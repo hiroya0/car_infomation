@@ -7,12 +7,12 @@ https://carinfomation-1188e7c8a511.herokuapp.com/
 # 機能紹介
 | トップ画面 | 各ランキング |
 | ---- | ---- |
-| ![トップ画面](public/images/top_info.png) | ![トップ画面](public/images/top_info.png) |
+| ![トップ画面](public/images/top_info.png) | ![トップ画面](public/images/topmenu.png) |
 | 新規の記事が上から表示されます。青いボタンを押すことで記事一覧画面に遷移し、より多くの記事を見ることができます。 | トップ画面には最新の記事が日付の降順に並び、アクセス数、ブックマーク数、コメント数に応じた記事のランキングが表示されます。 |
 
 | 記事一覧 | コメント&ブックマーク(ログインあり) |
 | ---- | ---- |
-| ![トップ画面](public/images/top_info.png) | ![トップ画面](public/images/top_info.png) |
+| ![トップ画面](public/images/article_index.png) | ![トップ画面](public/images/aticle_show.png) |
 | 現在取得された記事の一覧が表示されます。左上の検索を使用することで、入力されたキーワードに沿った記事を抽出して表示することができます。 | 記事の詳細画面にて、ブックマーク登録、記事へのコメントを残すことができます。元の記事へ遷移することも可能です。 |
 # 使用技術について
 ・Ruby on Rails 7.0.8
@@ -26,6 +26,6 @@ News APIで記事ごとにidを付加させることが上手く出来ず苦労�
 ![インフラ図](public/images/infrastructure.png)
 
 # ER図
+![ER図](public/images/ER.png)
 
 # 制作理由
-
