@@ -18,5 +18,5 @@ Rails.application.routes.draw do
 
   resources :bookmarks, only: [:index, :create, :destroy]
 
-  resources :keywords
+  resources :keywords, only: [:index, :create, :destroy]
 end

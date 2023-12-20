@@ -17,6 +17,16 @@ class HomesController < ApplicationController
     @top_bookmarked_articles = Article.where('bookmarks_count > ?', 0)
                                       .order(bookmarks_count: :desc)
                                       .limit(5)
+
+    @keyword_articles = []
+    if user_signed_in?
+      current_user.keywords.each do |keyword|
+        fetched_news = NewsApiService.fetch_car_news(keyword: keyword.word)
+        @keyword_articles.concat(fetched_news['articles']) if fetched_news['articles']
+      end
+      @keyword_articles = @keyword_articles.uniq { |article| article['title'] }
+      @keyword_articles = @keyword_articles.first(6) 
+    end                                  
   end
 
   private
