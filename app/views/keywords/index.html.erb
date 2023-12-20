@@ -29,24 +29,23 @@
         <%= f.label :word, "キーワード", class: 'control-label' %>
         <%= f.text_field :word, class: 'form-control' %>
       </div>
-
       <div class="actions">
-        <%= f.submit "追加", class: 'btn btn-primary btn-block' %>
+        <%= f.submit "追加する", class: 'btn btn-primary btn-block' %>
       </div>
     </div>
   </div>
 <% end %>
 
-<div class="card mt-4">
+<div class="card mt-4 keyword-card">
   <div class="card-header">
     <h2 class="mb-0">保存されたキーワード</h2>
   </div>
   <div class="card-body">
     <ul class="list-group">
       <% @keywords.each do |keyword| %>
-        <li class="list-group-item">
+        <li class="list-group-item keyword-list-item">
           <%= keyword.word %>
-          <%= button_to '削除', keyword_path(keyword), method: :delete %>
+          <%= button_to '削除', keyword_path(keyword), method: :delete, class: "btn btn-outline-danger" %>
         </li>
       <% end %>
     </ul>

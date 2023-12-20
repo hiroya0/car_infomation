@@ -21,7 +21,6 @@
   <body>
   <%= stylesheet_link_tag "homes_index", :media => "all" %>
   <%= stylesheet_link_tag "articles_index", :media => "all" %>
-  
   <% flash.each do |key, message| %>
   <% if key == 'notice' %>
     <% message = message.gsub(/^[^ ]+ /, '') %>

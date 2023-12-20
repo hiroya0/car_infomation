@@ -9,15 +9,3 @@
     padding: 20px;
     border-radius: 5px;
 }
-
-.card-img-top{
-    height: 160px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .card-img-top img {
-    width: 100%; 
-  }
