@@ -11,4 +11,5 @@ class User < ApplicationRecord
   has_many :articles, through: :bookmarks
   has_many :bookmarks, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :keywords, dependent: :destroy
 end

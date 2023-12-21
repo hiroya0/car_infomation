@@ -31,9 +31,44 @@
         </p>
       </div>
     </section>
+    
+<% if @keyword_articles.present? %>
+  <section class="py-5 bg-light">
+    <div class="container">
+      <h2 class="mb-4">ユーザーキーワードに基づいた記事</h2>
+      <%= link_to '現在の設定を確認・編集する', keywords_path, class: 'btn btn-primary mb-3' %>
+      <div class="row">
+        <% @keyword_articles.each do |article| %>
+          <div class="col-md-4 d-flex align-items-stretch">
+            <div class="card mb-4 shadow-sm d-flex flex-column">
+              <% if article['urlToImage'].present? %>
+                <%= image_tag article['urlToImage'], alt: 'Article Image', class: 'card-img-top img-fluid' %>
+              <% else %>
+                <%= image_tag '/images/car3_gray.png', alt: '車のイラスト', class: 'card-img-top img-fluid' %>
+              <% end %>
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title"><%= article['title'] %></h5>
+                <%= link_to '記事を読む', article['url'], class: 'btn btn-primary mt-auto', target: '_blank' %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+<% else %>
+  <section class="py-5 bg-light">
+    <div class="container">
+      <h2 class="mb-4">ユーザーキーワードが設定されていません</h2>
+      <p>ユーザーキーワードを設定すると設定したキーワードに関連した記事が表示されます</p>
+      <%= link_to '設定はこちらから', keywords_path, class: 'btn btn-primary' %>
+    </div>
+  </section>
+<% end %>
 
     <div class="album py-5 bg-light">
       <div class="container"> 
+      <h2 class="mb-4">新着記事</h2>
         <div class="row">
           <div class="col-lg-8 mb-3">
             <% @articles.each do |article| %>
@@ -157,7 +192,7 @@
       </p>
     </div>
   </section>
-  
+
   <div class="album py-5 bg-light">
     <div class="container"> 
       <div class="row">
