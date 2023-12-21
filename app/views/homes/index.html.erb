@@ -36,7 +36,7 @@
   <section class="py-5 bg-light">
     <div class="container">
       <h2 class="mb-4">ユーザーキーワードに基づいた記事</h2>
-      <%= link_to '設定はこちらから', keywords_path, class: 'btn btn-primary mb-3' %>
+      <%= link_to '現在の設定を確認・編集する', keywords_path, class: 'btn btn-primary mb-3' %>
       <div class="row">
         <% @keyword_articles.each do |article| %>
           <div class="col-md-4 d-flex align-items-stretch">
@@ -60,6 +60,7 @@
   <section class="py-5 bg-light">
     <div class="container">
       <h2 class="mb-4">ユーザーキーワードが設定されていません</h2>
+      <p>ユーザーキーワードを設定すると設定したキーワードに関連した記事が表示されます</p>
       <%= link_to '設定はこちらから', keywords_path, class: 'btn btn-primary' %>
     </div>
   </section>
