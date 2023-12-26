@@ -21,6 +21,7 @@
       <div class="card">
         <div class="card-header">
           <h2 class="mb-0">プロフィール編集</h2>
+          <p class="my-1">ゲストユーザーの場合、変更は反映されません</p>
         </div>
         <div class="card-body">
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal' }) do |f| %>
