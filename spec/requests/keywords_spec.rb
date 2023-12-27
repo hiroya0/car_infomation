@@ -4,6 +4,7 @@ require 'rails_helper'
 
 RSpec.describe "キーワード", type: :request do
   let(:user) { create(:user) }
+  let!(:keyword) { create(:keyword, user: user, word: '既存のキーワード') }
   let(:valid_word) { { word: 'テストキーワード' } }
   let(:invalid_word) { { word: '' } }
 
@@ -51,6 +52,19 @@ RSpec.describe "キーワード", type: :request do
         post keywords_path, params: { keyword: invalid_word }
         expect(response).to redirect_to(keywords_path)
       end
+    end
+  end
+
+  describe 'DELETE #destroy' do
+    it 'キーワードを削除する' do
+      expect do
+        delete keyword_path(keyword)
+      end.to change(user.keywords, :count).by(-1)
+    end
+
+    it 'コメント一覧ページにリダイレクトする' do
+      delete keyword_path(keyword)
+      expect(response).to redirect_to(keywords_path)
     end
   end
 end
