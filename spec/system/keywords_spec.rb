@@ -4,6 +4,7 @@ require 'rails_helper'
 
 RSpec.describe "Keywords", type: :system do
   let(:user) { create(:user) }
+  let!(:keyword) { create(:keyword, user: user, word: '既存のキーワード') }
 
   before do
     driven_by(:selenium_chrome_headless)
@@ -39,6 +40,13 @@ RSpec.describe "Keywords", type: :system do
         click_button '追加する'
         expect(page).to have_content('キーワードを入力してください。')
       end
+    end
+  end
+  describe 'キーワードの削除' do
+    it 'ユーザーが自分のキーワードを削除できる' do
+      visit keywords_path
+      find('.btn.btn-outline-danger').click
+      expect(page).not_to have_content 'テストキーワード'
     end
   end
 end

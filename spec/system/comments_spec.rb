@@ -55,7 +55,7 @@ RSpec.describe 'Comments' do
       visit comments_path
       find('.btn.btn-outline-danger').click
       page.driver.browser.switch_to.alert.accept
-      expect(page).not_to have_content 'いい車'
+      expect(page).not_to have_content '既存のキーワード'
     end
   end
 end
