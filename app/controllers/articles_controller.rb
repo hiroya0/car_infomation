@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
         article['title'].include?(keyword) || article['content'].include?(keyword)
       end
     end
-  
+
     filter_by_company if params[:q_company].present?
   end
 

@@ -7,12 +7,16 @@ class KeywordsController < ApplicationController
   end
 
   def create
-    @keyword = current_user.keywords.build(keyword_params)
-    if @keyword.save
-      redirect_to keywords_path, notice: t('keywords.add_success')
+    if current_user.keywords.count >= 3
+      redirect_to keywords_path, alert: t('keywords.limit')
     else
-      @keywords = current_user.keywords
-      redirect_to keywords_path, alert: t('keywords.delete_success')
+      @keyword = current_user.keywords.build(keyword_params)
+      if @keyword.save
+        redirect_to keywords_path, notice: t('keywords.add_success')
+      else
+        @keywords = current_user.keywords
+        redirect_to keywords_path, alert: t('keywords.add_error')
+      end
     end
   end
 
