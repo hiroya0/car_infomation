@@ -10,8 +10,9 @@ ja:
     article_not_found: 'この記事は元のURLが変更されたか削除されました'
   keywords:
     add_success: 'キーワードが追加されました。トップページに戻ってみましょう。'
-    delete_success: 'キーワードを入力してください。'
+    add_error: 'キーワードを入力してください。'
     alert:  'キーワードが削除されました。'
+    limit: 'キーワードは3つまで登録できます。'
   activerecord:
     models:
       user: "ユーザー"
