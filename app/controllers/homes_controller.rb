@@ -39,7 +39,7 @@ class HomesController < ApplicationController
     hashed_url = params[:id]
     article = @articles.find { |a| url_to_hash(a['url']) == hashed_url }
 
-    if article.present?
+    article.present?
       actual_article = Article.find_by(hashed_url: hashed_url)
       actual_article || Article.create(
         hashed_url: hashed_url,
@@ -49,9 +49,5 @@ class HomesController < ApplicationController
         url: article['url'],
         description: article['description']
       )
-    else
-      flash[:error] = t('articles.article_not_found')
-      redirect_to root_path
-    end
   end
 end
