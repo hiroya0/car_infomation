@@ -6,8 +6,6 @@ ja:
   comments:
     add_success: 'コメントを追加しました'
     delete_success: 'コメントを削除しました'
-  articles:
-    article_not_found: 'この記事は元のURLが変更されたか削除されました'
   keywords:
     add_success: 'キーワードが追加されました。トップページに戻ってみましょう。'
     add_error: 'キーワードを入力してください。'

@@ -38,7 +38,7 @@ class ArticlesController < ApplicationController
     hashed_url = params[:id]
     article = @articles.find { |a| url_to_hash(a['url']) == hashed_url }
 
-    if article.present?
+    article.present?
       actual_article = Article.find_by(hashed_url: hashed_url)
       actual_article || Article.create(
         hashed_url: hashed_url,
@@ -48,10 +48,5 @@ class ArticlesController < ApplicationController
         urlToImage: article['urlToImage'],
         url: article['url']
       )
-    else
-      flash[:error] = t('articles.article_not_found')
-      redirect_to root_path
-      nil
-    end
   end
 end
