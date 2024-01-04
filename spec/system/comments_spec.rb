@@ -45,7 +45,7 @@ RSpec.describe 'Comments' do
     it '記事に対するすべてのコメントが表示される' do
       create(:comment, article: article, user: user, content: 'いい車')
       visit comments_path
-      expect(page).to have_content '投稿一覧'
+      expect(page).to have_content 'コメント投稿一覧'
     end
   end
 
